@@ -23,9 +23,9 @@ class BodyFatViewModel: ObservableObject {
         var result: Double
         
         if gender == "male" {
-            result = (1.2 * BMI) + (0.23 * Double(age)) - 10.8 - 5.4
+            result = (1.2 * BMI) + (0.23 * Double(age)) - (10.8 * 1) - 5.4
         } else {
-            result = (1.2 * BMI) + (0.23 * Double(age)) - 5.4
+            result = (1.2 * BMI) + (0.23 * Double(age)) - (10.8 * 0) - 5.4
         }
         return result
     }
@@ -47,7 +47,7 @@ class BodyFatViewModel: ObservableObject {
                 bfpFeedback = "Fitness"
             case 18...24:
                 bfpFeedback = "Average"
-            case 25..<36:
+            case 25...:
                 bfpFeedback = "Obese"
             default:
                 bfpFeedback = "Check your results again"
@@ -62,7 +62,7 @@ class BodyFatViewModel: ObservableObject {
                 bfpFeedback = "Fitness"
             case 25...31:
                 bfpFeedback = "Average"
-            case 32..<40:
+            case 32...:
                 bfpFeedback = "Obese"
             default:
                 bfpFeedback = "Check your results again"
