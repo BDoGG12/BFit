@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct UserInputView: View {
-    enum Gender: String, CaseIterable, Identifiable {
-    case male, female
-        var id: Self {self}
-    }
-    @State private var selectedGender: Gender = .male
+    @State private var selectedGender: String = "male"
     @State private var height = 65.0
     @State private var age = 55.0
     @State private var weight = 253.0
@@ -23,14 +19,14 @@ struct UserInputView: View {
         VStack {
             Text("Select Gender")
             Picker(selection: $selectedGender, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
-                Text("Male").tag(Gender.male)
-                Text("Female").tag(Gender.female)
+                Text("Male").tag("male")
+                Text("Female").tag("female")
             }
             .onTapGesture {
-                if $selectedGender.wrappedValue.rawValue == "male" {
-                    viewModel.gender = .male
+                if selectedGender == "male" {
+                    viewModel.gender = "male"
                 } else {
-                    viewModel.gender = .female
+                    viewModel.gender = "female"
                 }
             }
         }
@@ -109,12 +105,13 @@ struct UserInputView: View {
         
         Button("Submit") {
             print("Info submitted")
-            print("Gender: \($selectedGender.wrappedValue)")
+            print("Gender: \(selectedGender)")
             print("Age: \(viewModel.age)")
             print("Height: \(viewModel.height)")
             print("Weight: \(viewModel.weight)")
-            let result = viewModel.calculateBodyFatPercentage(gender: viewModel.gender, height: viewModel.height, weight: viewModel.weight, age: viewModel.age)
-            print("Body fat percentage is \(result)%")
+            let result = viewModel.calculateBodyFatPercentage(gender: selectedGender, height: viewModel.height, weight: viewModel.weight, age: viewModel.age)
+            let msg = viewModel.bodyFatPercentageRange(bfpResult: result, gender: selectedGender)
+            print("Body fat percentage is \(result)%. \(msg)")
         }
         .tint(.blue)
        
