@@ -9,12 +9,12 @@ import Combine
 import Foundation
 
 class BodyFatViewModel: ObservableObject {
-    @Published var gender: Gender = .male
+    @Published var gender: String = "male"
     @Published var height: Double = 178
     @Published var weight: Double = 60
     @Published var age: Int = 25
     
-    func calculateBodyFatPercentage(gender: Gender, height: Double, weight: Double, age: Int) -> Double {
+    func calculateBodyFatPercentage(gender: String, height: Double, weight: Double, age: Int) -> Double {
         
         // Formula
         // BFP = (1.2 * BMI) + (0.23 * age) - (10.8 * 1) - 5.4
@@ -22,7 +22,7 @@ class BodyFatViewModel: ObservableObject {
         let BMI = (weight * 703) / pow(height, 2)
         var result: Double
         
-        if gender == .male {
+        if gender == "male" {
             result = (1.2 * BMI) + (0.23 * Double(age)) - 10.8 - 5.4
         } else {
             result = (1.2 * BMI) + (0.23 * Double(age)) - 5.4
@@ -30,14 +30,14 @@ class BodyFatViewModel: ObservableObject {
         return result
     }
     
-    func bodyFatPercentageRange(bfpResult: Double, gender: Gender) -> String {
+    func bodyFatPercentageRange(bfpResult: Double, gender: String) -> String {
         
         // if gender is male, then do the body fat percentage checks
         // if gender is female, same thing
         
         var bfpFeedback = ""
         
-        if gender == .male {
+        if gender == "male" {
             switch bfpResult {
             case 2...5:
                 bfpFeedback = "Essential Fat"
