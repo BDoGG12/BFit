@@ -8,22 +8,26 @@
 import SwiftUI
 
 struct UserInputView: View {
-    enum Gender: String, CaseIterable, Identifiable {
-    case male, female
-        var id: Self {self}
-    }
-    @State private var selectedGender: Gender = .male
+    @State private var selectedGender: String = "male"
     @State private var height = 65.0
     @State private var age = 55.0
     @State private var weight = 253.0
+    @State private var viewModel = BodyFatViewModel()
     
     @State private var isEditing = false
     var body: some View {
         VStack {
             Text("Select Gender")
             Picker(selection: $selectedGender, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
-                Text("Male").tag(Gender.male)
-                Text("Female").tag(Gender.female)
+                Text("Male").tag("male")
+                Text("Female").tag("female")
+            }
+            .onTapGesture {
+                if selectedGender == "male" {
+                    viewModel.gender = "male"
+                } else {
+                    viewModel.gender = "female"
+                }
             }
         }
         .padding(10)
@@ -46,6 +50,7 @@ struct UserInputView: View {
                             Text("100")
                         } onEditingChanged: { editing in
                             isEditing = editing
+                            viewModel.age = Int(age)
                         }
                 }
             }
@@ -68,6 +73,7 @@ struct UserInputView: View {
                             Text("90")
                         } onEditingChanged: { editing in
                             isEditing = editing
+                            viewModel.height = height
                         }
                 }
             }
@@ -90,6 +96,7 @@ struct UserInputView: View {
                             Text("440")
                         } onEditingChanged: { editing in
                             isEditing = editing
+                            viewModel.weight = weight
                         }
                 }
             }
@@ -98,6 +105,13 @@ struct UserInputView: View {
         
         Button("Submit") {
             print("Info submitted")
+            print("Gender: \(selectedGender)")
+            print("Age: \(viewModel.age)")
+            print("Height: \(viewModel.height)")
+            print("Weight: \(viewModel.weight)")
+            let result = viewModel.calculateBodyFatPercentage(gender: selectedGender, height: viewModel.height, weight: viewModel.weight, age: viewModel.age)
+            let msg = viewModel.bodyFatPercentageRange(bfpResult: result, gender: selectedGender)
+            print("Body fat percentage is \(result)%. \(msg)")
         }
         .tint(.blue)
        
