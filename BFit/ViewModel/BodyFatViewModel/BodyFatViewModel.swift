@@ -19,7 +19,7 @@ class BodyFatViewModel: ObservableObject {
         // Formula
         // BFP = (1.2 * BMI) + (0.23 * age) - (10.8 * 1) - 5.4
         // If gender is male, use binary value of 1, else 0
-        let BMI = weight / pow(height / 100, 2)
+        let BMI = (weight * 703) / pow(height, 2)
         var result: Double
         
         if gender == .male {
