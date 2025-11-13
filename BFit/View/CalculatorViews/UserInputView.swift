@@ -125,6 +125,14 @@ struct UserInputView: View {
             .cornerRadius(10)
             .tint(.blue)
             
+            Button("", action: {
+                
+            })
+            .sheet(isPresented: $showSheet) {
+                ResultsView(result: result ?? 0.0, bfpZone: resultMsg ?? "Unknown", color: resultColor ?? .gray)
+            }
+            .disabled(showNext == false)
+            
         }
        
     }
