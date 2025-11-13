@@ -7,12 +7,13 @@
 
 import Combine
 import Foundation
+import SwiftUICore
 
 class BodyFatViewModel: ObservableObject {
     @Published var gender: String = "male"
-    @Published var height: Double = 178
-    @Published var weight: Double = 60
-    @Published var age: Int = 25
+    @Published var height: Double = 65
+    @Published var weight: Double = 253
+    @Published var age: Int = 55
     
     func calculateBodyFatPercentage(gender: String, height: Double, weight: Double, age: Int) -> Double {
         
@@ -69,5 +70,23 @@ class BodyFatViewModel: ObservableObject {
             }
         }
         return bfpFeedback
+    }
+    
+    func colorCodeBFP(result: String) -> Color {
+        
+        switch result {
+        case "Essential Fat":
+            return Color.cyan
+        case "Athletes":
+            return Color.green
+        case "Fitness":
+            return Color.yellow
+        case "Average":
+            return Color.orange
+        case "Obese":
+            return Color.red
+        default:
+            return Color.black
+        }
     }
 }

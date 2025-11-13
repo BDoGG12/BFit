@@ -13,6 +13,17 @@ struct UserInputView: View {
     @State private var age = 55.0
     @State private var weight = 253.0
     @State private var viewModel = BodyFatViewModel()
+    @State private var result: Double? = nil
+    
+    // Results
+    @State private var resultMsg: String? = nil
+    @State private var resultColor: Color? = nil
+    
+    // Show Sheet
+    @State private var showSheet: Bool = false
+    
+    // Show Next Button
+    @State private var showNext: Bool = false
     
     @State private var isEditing = false
     var body: some View {
@@ -103,18 +114,43 @@ struct UserInputView: View {
         }
         .padding(10)
         
-        Button("Submit") {
-            print("Info submitted")
-            print("Gender: \(selectedGender)")
-            print("Age: \(viewModel.age)")
-            print("Height: \(viewModel.height)")
-            print("Weight: \(viewModel.weight)")
-            let result = viewModel.calculateBodyFatPercentage(gender: selectedGender, height: viewModel.height, weight: viewModel.weight, age: viewModel.age)
-            let msg = viewModel.bodyFatPercentageRange(bfpResult: result, gender: selectedGender)
-            print("Body fat percentage is \(result)%. \(msg)")
+        VStack {
+            Button("Calculate", action: {
+                getResults()
+            })
+            .font(.system(size: 20, weight: .bold, design: .default))
+            .foregroundColor(.white)
+            .padding()
+            .background(Color.blue)
+            .cornerRadius(10)
+            .tint(.blue)
+            
+            Button("", action: {
+                
+            })
+            .sheet(isPresented: $showSheet) {
+                ResultsView(result: result ?? 0.0, bfpZone: resultMsg ?? "Unknown", color: resultColor ?? .gray)
+            }
+            .disabled(showNext == false)
+            
         }
-        .tint(.blue)
        
+    }
+    
+    func getResults() {
+        // Assign values to result
+        result = viewModel.calculateBodyFatPercentage(gender: selectedGender, height: viewModel.height, weight: viewModel.weight, age: viewModel.age)
+        
+        // Assign values to resultMsg
+        resultMsg = viewModel.bodyFatPercentageRange(bfpResult: result ?? 10.1, gender: selectedGender)
+        
+        // Assign values to resultColor
+        resultColor = viewModel.colorCodeBFP(result: resultMsg ?? "Unknown")
+        
+        // Change showSheet to true
+        showSheet = true
+        showNext = true
+        print("Results are calculated: \(result ?? 10.1)%, \(resultMsg ?? "Unknown, please try again"), \(resultColor ?? .blue)")
     }
 }
 
