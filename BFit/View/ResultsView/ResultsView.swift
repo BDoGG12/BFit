@@ -23,16 +23,14 @@ struct ResultsView: View {
             Text("\(bfpZone) Zone!")
                 .font(.system(size: 30, weight: .bold, design: .default))
                 .foregroundStyle(color)
-            Button(action: {
+            Button("Ok") {
                 dismiss()
-            }) {
-                Text("Ok")
-                    .font(.system(size: 20, weight: .bold, design: .default))
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
             }
+            .font(.system(size: 20, weight: .bold, design: .default))
+            .foregroundColor(.white)
+            .padding()
+            .background(Color.blue)
+            .cornerRadius(10)
         }
         .background {
             Image("results_fit")
