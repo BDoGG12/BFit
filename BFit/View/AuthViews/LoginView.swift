@@ -18,6 +18,8 @@ struct LoginView: View {
             GoogleSignInButton {
                 handleSignInButton()
             }
+            .frame(width: 10.0, height: 50.0, alignment: .center)
+            .buttonStyle(.borderedProminent)
         }
     }
     func handleSignInButton() {
