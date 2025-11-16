@@ -17,43 +17,38 @@ enum AuthError: Error {
 class AuthViewModel: ObservableObject {
     @Published var isLoggedIn: Bool = false
     
-    func signInWithGoogle() async -> Bool {
+    func signInWithGoogle() async throws {
+        // Assign clientID to firebase's app client id
         guard let clientID = FirebaseApp.app()?.options.clientID else {
-            fatalError("No client ID found in Firebase configuration")
+            throw AuthError.tokenError(message: "Client ID not found")
         }
+        
+        // Create Google Sign In config object
         let config = GIDConfiguration(clientID: clientID)
-        GIDSignIn.sharedInstance.configuration = config
-        var errorMessage: String? = ""
         
-        guard let windowScene = await UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = await windowScene.windows.first,
-              let rootViewController = await window.rootViewController
-        else {
-            print("There is no root view controller")
-            return false
+        // Start sign in flow
+        // find view controller
+        let scene = await UIApplication.shared.connectedScenes.first as! UIWindowScene
+        guard let rootViewController = await scene.windows.first?.rootViewController else {
+            fatalError("There is no root view controller")
         }
         
-        do {
-            let userAuth = try await GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController)
-            let user = userAuth.user
-            guard let idToken = user.idToken else {
-                throw AuthError.tokenError(message: "No ID token found")
-            }
-            let accessToken = user.accessToken
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: accessToken.tokenString)
-            let result = try await Auth.auth().signIn(with: credential)
-            let firebaseUser = result.user
-            print("Signed in with user: \(firebaseUser.uid)")
-            return true
-        } catch {
-            print(error.localizedDescription)
-            errorMessage = error.localizedDescription
-            return false
+        // google sign in response
+        let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController)
+        
+        let user = result.user
+        guard let idToken = user.idToken?.tokenString else {
+            throw AuthError.tokenError(message: "Failed to get id token")
         }
         
-       
-        
-        return false
+        // Firebase Auth
+        let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
+        try await Auth.auth().signIn(with: credential)
+    }
+    
+    func signOutWithGoogle() async throws {
+        GIDSignIn.sharedInstance.signOut()
+        try Auth.auth().signOut()
     }
     
 }
