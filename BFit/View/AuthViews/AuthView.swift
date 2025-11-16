@@ -10,9 +10,12 @@ import GoogleSignInSwift
 import GoogleSignIn
 
 struct AuthView: View {
+    @State var isSignedIn: Bool = false
+    @State var viewModel: AuthViewModel = AuthViewModel()
+    
     var body: some View {
         VStack {
-            Text("Login with:")
+            Text("Login")
                 .font(.title)
                 .fontWeight(.bold)
                 .padding()
