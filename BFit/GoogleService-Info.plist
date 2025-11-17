@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
-    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
-      <key>CLIENT_ID</key>
-      <string>841949576344-89c15bmsplo6m8fr6n8d6o6vn3l8cj1q.apps.googleusercontent.com</string>
-      <key>REVERSED_CLIENT_ID</key>
-      <string>com.googleusercontent.apps.841949576344-89c15bmsplo6m8fr6n8d6o6vn3l8cj1q</string>
-      <key>PLIST_VERSION</key>
-      <string>1</string>
-      <key>BUNDLE_ID</key>
-      <string>com.appworkshop.BFit</string>
-    </dict>
-    </plist>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>841949576344-89c15bmsplo6m8fr6n8d6o6vn3l8cj1q.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.841949576344-89c15bmsplo6m8fr6n8d6o6vn3l8cj1q</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBEWGEZ8Phkb9sP-g2jHRn46Cf4Mm4OfOA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>841949576344</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.appworkshop.BFit</string>
+	<key>PROJECT_ID</key>
+	<string>bfit-e9e7f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bfit-e9e7f.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:841949576344:ios:c08ba1addd2df6afe324ed</string>
+</dict>
+</plist>
