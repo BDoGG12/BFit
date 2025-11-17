@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		D452D0EC2EC13AD2009C8E4E /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = D452D0EB2EC13AD2009C8E4E /* GoogleSignIn */; };
 		D452D0EE2EC13AD2009C8E4E /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D452D0ED2EC13AD2009C8E4E /* GoogleSignInSwift */; };
-		D45CC25D2EC7C2B0007ACDAD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D45CC25C2EC7C2B0007ACDAD /* FirebaseAuth */; };
-		D45CC25F2EC7C2B0007ACDAD /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = D45CC25E2EC7C2B0007ACDAD /* FirebaseCore */; };
-		D45CC2612EC7C2B0007ACDAD /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D45CC2602EC7C2B0007ACDAD /* FirebaseCrashlytics */; };
-		D45CC2632EC7C2B0007ACDAD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D45CC2622EC7C2B0007ACDAD /* FirebaseDatabase */; };
-		D45CC2652EC7C2B0007ACDAD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D45CC2642EC7C2B0007ACDAD /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,22 +34,9 @@
 		D452D0CB2EC12EF3009C8E4E /* BFitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BFitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		D45CC2692EC7C9D4007ACDAD /* Exceptions for "BFit" folder in "BFit" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = D452D0B02EC12EF2009C8E4E /* BFit */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D452D0B32EC12EF2009C8E4E /* BFit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				D45CC2692EC7C9D4007ACDAD /* Exceptions for "BFit" folder in "BFit" target */,
-			);
 			path = BFit;
 			sourceTree = "<group>";
 		};
@@ -75,13 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D45CC2632EC7C2B0007ACDAD /* FirebaseDatabase in Frameworks */,
 				D452D0EC2EC13AD2009C8E4E /* GoogleSignIn in Frameworks */,
-				D45CC25D2EC7C2B0007ACDAD /* FirebaseAuth in Frameworks */,
-				D45CC2612EC7C2B0007ACDAD /* FirebaseCrashlytics in Frameworks */,
-				D45CC25F2EC7C2B0007ACDAD /* FirebaseCore in Frameworks */,
 				D452D0EE2EC13AD2009C8E4E /* GoogleSignInSwift in Frameworks */,
-				D45CC2652EC7C2B0007ACDAD /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,11 +121,6 @@
 			packageProductDependencies = (
 				D452D0EB2EC13AD2009C8E4E /* GoogleSignIn */,
 				D452D0ED2EC13AD2009C8E4E /* GoogleSignInSwift */,
-				D45CC25C2EC7C2B0007ACDAD /* FirebaseAuth */,
-				D45CC25E2EC7C2B0007ACDAD /* FirebaseCore */,
-				D45CC2602EC7C2B0007ACDAD /* FirebaseCrashlytics */,
-				D45CC2622EC7C2B0007ACDAD /* FirebaseDatabase */,
-				D45CC2642EC7C2B0007ACDAD /* FirebaseFirestore */,
 			);
 			productName = BFit;
 			productReference = D452D0B12EC12EF2009C8E4E /* BFit.app */;
@@ -234,7 +206,6 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				D452D0EA2EC13AD2009C8E4E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-				D45CC25B2EC7C2B0007ACDAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D452D0B22EC12EF2009C8E4E /* Products */;
@@ -441,8 +412,6 @@
 				DEVELOPMENT_TEAM = P85PDAVQFY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BFit/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -473,8 +442,6 @@
 				DEVELOPMENT_TEAM = P85PDAVQFY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BFit/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -615,14 +582,6 @@
 				minimumVersion = 9.0.0;
 			};
 		};
-		D45CC25B2EC7C2B0007ACDAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 12.6.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -635,31 +594,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D452D0EA2EC13AD2009C8E4E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
-		};
-		D45CC25C2EC7C2B0007ACDAD /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D45CC25B2EC7C2B0007ACDAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		D45CC25E2EC7C2B0007ACDAD /* FirebaseCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D45CC25B2EC7C2B0007ACDAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCore;
-		};
-		D45CC2602EC7C2B0007ACDAD /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D45CC25B2EC7C2B0007ACDAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		D45CC2622EC7C2B0007ACDAD /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D45CC25B2EC7C2B0007ACDAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-		D45CC2642EC7C2B0007ACDAD /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D45CC25B2EC7C2B0007ACDAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
