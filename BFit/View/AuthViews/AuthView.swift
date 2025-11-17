@@ -20,7 +20,14 @@ struct AuthView: View {
                 .fontWeight(.bold)
                 .padding()
             GoogleSignInButton {
-                print("Hi")
+                Task {
+                    do {
+                        try await viewModel.signInWithGoogle()
+                        isSignedIn = true
+                    } catch {
+                        print("Sign in error: \(error)")
+                    }
+                }
             }
             .frame(width: 200, height: 44, alignment: .center)
         }
