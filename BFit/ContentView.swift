@@ -18,11 +18,15 @@ struct ContentView: View {
                     .imageScale(.large)
                     .foregroundStyle(.tint)
                     .padding()
-                NavigationLink("Log In", destination: LoginView())
+                NavigationLink("Log In", destination: AuthView())
                 Text("Or")
                     .bold()
                     .padding()
                 NavigationLink("Sign Up", destination: SignUpView())
+                Text("Or")
+                    .bold()
+                    .padding()
+                NavigationLink("Go to Calculator", destination: UserInputView())
             }
             .padding()
         }
