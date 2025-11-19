@@ -17,7 +17,7 @@ struct ContentView: View {
                 UserInputView()
             }
             Tab("Profile", systemImage: "person.fill") {
-                AuthView()
+                ProfileView()
             }
         }
         
