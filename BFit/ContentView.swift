@@ -9,22 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Welcome to BFit!")
-                    .font(.largeTitle)
-                    .bold()
-                Image("AppIcon")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                    .padding()
-                NavigationLink("Log In", destination: LoginView())
-                Text("Or")
-                    .bold()
-                    .padding()
-                NavigationLink("Sign Up", destination: SignUpView())
+        TabView {
+            Tab("Home", systemImage: "house.fill") {
+                HomeView()
             }
-            .padding()
+            Tab("Calculator", systemImage: "plus.forwardslash.minus") {
+                UserInputView()
+            }
+            Tab("Profile", systemImage: "person.fill") {
+                ProfileView()
+            }
         }
         
     }
