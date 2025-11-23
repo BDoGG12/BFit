@@ -33,11 +33,11 @@ struct LaunchView: View {
                         .padding()
                         .background(.blue)
                         .cornerRadius(10)
-                    NavigationLink("Login", destination: LoginView())
+                    NavigationLink("Login", destination: AuthView())
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
-                        .background(.gray)
+                        .background(.black)
                         .cornerRadius(10)
                 }
             })
