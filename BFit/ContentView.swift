@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         TabView {
             Tab("Home", systemImage: "house.fill") {
-                HomeView()
+                LaunchView()
             }
             Tab("Calculator", systemImage: "plus.forwardslash.minus") {
                 UserInputView()
@@ -19,8 +19,7 @@ struct ContentView: View {
             Tab("Profile", systemImage: "person.fill") {
                 ProfileView()
             }
-        }
-        
+        }        
     }
 }
 
