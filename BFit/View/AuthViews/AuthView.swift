@@ -8,6 +8,7 @@
 import SwiftUI
 import GoogleSignInSwift
 import GoogleSignIn
+import AuthenticationServices
 
 struct AuthView: View {
     @State var isSignedIn: Bool = false
@@ -15,7 +16,7 @@ struct AuthView: View {
     
     var body: some View {
         VStack {
-            Text("Login")
+            Text("Login with:")
                 .font(.title)
                 .fontWeight(.bold)
                 .padding()
@@ -30,6 +31,21 @@ struct AuthView: View {
                 }
             }
             .frame(width: 200, height: 44, alignment: .center)
+            
+            Text("Or")
+                .font(.headline)
+                .fontWeight(.bold)
+                .padding()
+            
+            // Apple Sign In
+            SignInWithAppleButton { idRequest in
+                print(idRequest.user ?? "Unknown User")
+            } onCompletion: { result
+                in
+                print("Result: \(result)")
+            }
+            .frame(width: 200, height: 44, alignment: .center)
+
         }
     }
 }
