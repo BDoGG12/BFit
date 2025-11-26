@@ -1,33 +1,51 @@
-# 🏋️‍♂️ BFit — Body Fat Calculator for iPhone
+# 🏋️‍♂️ BFit — Body Fat Calculator & AI Fitness Insights for iPhone
 
-**BFit** is a beautifully designed **iOS app built with SwiftUI** that helps users estimate their **body fat percentage** using BMI-based formulas. The app gives users **personalized insights** into their fitness progress and encourages a more mindful approach to health and self-improvement.
+**BFit** is a beautifully designed **iOS app built with SwiftUI** that helps users estimate their **body fat percentage** using standard formulas.  
+The core experience is intentionally simple — no accounts, no complexity, just fast results.
+
+Users who want deeper guidance can unlock **BFit Premium**, which provides personalized **AI-powered fitness insights, meal suggestions, and weekly improvement tips** based on their body fat results.
 
 ---
 
 ## 📱 Features
 
-- **Body Fat Calculator** — Estimate your body fat percentage using BMI and gender-specific formulas.  
-- **Simple UI** — Clean and intuitive design with SwiftUI, optimized for iPhone.  
-- **Instant Results** — Enter your height, weight, and age to get results instantly.  
-- **Health Insights (Coming Soon)** — AI-powered recommendations for fitness goals, nutrition, and recovery.  
-- **Data Privacy** — All calculations happen locally on your device.  
+### Free Features
+- **Body Fat Calculator** — Estimate your body fat percentage instantly using height, weight, age, and gender.  
+- **BMI Calculator** — Optional BMI interpretation for added context.  
+- **Simple UI** — Clean and intuitive SwiftUI design optimized for iPhone.  
+- **Instant Results** — Real-time calculations as you adjust your inputs.  
+- **Data Privacy** — All calculations happen locally on your device.
+
+### 🔒 BFit Premium (In-App Subscription)
+Unlock deeper insights powered by the OpenAI API:
+
+- **AI Body Insights** — Understand what your estimated body fat means for health, performance, and physique.  
+- **AI Meal Suggestions** — Suggested foods, macro guidance, and simple meal outlines tailored to your goals.  
+- **AI Fitness Recommendations** — Training ideas and weekly strategies to help you improve.  
+- **Weekly Optimization Tips** — Actionable guidance for your next 7 days.  
+- **Save Unlimited Measurements** — Stored locally on-device. No login required.
 
 ---
 
 ## 🧠 Inspiration
 
-Many people want to know their **body composition** without needing expensive equipment or gym visits.  
-**BFit** makes that possible — giving anyone a simple way to measure and track their health in seconds.
+Most people want a quick, no-hassle way to understand their body composition without complicated tools or gym machines.  
+**BFit** makes that possible — giving anyone a fast, accurate, and meaningful look at their fitness in seconds.
+
+The goal was to design a calculator that feels **elegant**, **modern**, and **helpful**, while offering optional AI intelligence for users who want personalized guidance.
 
 ---
 
 ## 🧩 Architecture
 
-Built using **MVVM (Model-View-ViewModel)** for scalability and clean code organization:
+Built using **MVVM (Model-View-ViewModel)** for scalability and clean separation of logic:
 
 - `Model` — Handles BMI and body fat calculations.  
-- `ViewModel` — Manages logic, input validation, and computed results.  
-- `View` — Built entirely in **SwiftUI** with reactive UI updates.
+- `ViewModel` — Manages input validation, computed results, and API triggers for Premium insights.  
+- `View` — Fully built in **SwiftUI** with reactive UI updates.  
+- `Services` —  
+  - `OpenAIService` for AI-generated insights  
+  - `PurchaseManager` for RevenueCat subscription handling  
 
 ---
 
@@ -36,6 +54,9 @@ Built using **MVVM (Model-View-ViewModel)** for scalability and clean code organ
 - **SwiftUI**  
 - **Combine**  
 - **MVVM Architecture**  
+- **RevenueCat** (In-App Purchases)  
+- **OpenAI API** (AI Fitness Insights)  
+- **UserDefaults** (Local-only storage)  
 - **Xcode 16+**  
 - **iOS 17+**
 
@@ -53,32 +74,11 @@ Built using **MVVM (Model-View-ViewModel)** for scalability and clean code organ
    ```bash
    git clone https://github.com/BDoGG12/BFit.git
 2. Open the project in Xcode
-
 3. Build and run the project (Cmd + R)
-4. 🧬 Future Enhancements
-
-✅ Apple HealthKit integration
-
-✅ Progress tracking with history
-
-✅ Personalized AI recommendations
-
-✅ Widget support
-
-✅ Dark mode themes
-
-| Gender | Weight (kg) | Height (cm) | BMI  | Estimated Body Fat % |
-| :----- | :---------- | :---------- | :--- | :------------------- |
-| Male   | 75          | 175         | 24.5 | 18.5%                |
-| Female | 60          | 165         | 22.0 | 25.1%                |
-
-🎨 App Icon
-
-The BFit icon represents balance and progress — minimal, bold, and ready for the App Store.
-(Icon created with no background color for clean integration into iOS themes.)
 
 👨‍💻 Author
-
 Benjamin Do
 iOS Developer & Martial Artist
 📍 Vernon Hills, IL
+GitHub: https://github.com/BDoGG12
+TikTok: @karate_mechanic
