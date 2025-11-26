@@ -76,9 +76,13 @@ Built using **MVVM (Model-View-ViewModel)** for scalability and clean separation
 2. Open the project in Xcode
 3. Build and run the project (Cmd + R)
 
-👨‍💻 Author
+## 👨‍💻 Author
 Benjamin Do
+
 iOS Developer & Martial Artist
+
 📍 Vernon Hills, IL
+
 GitHub: https://github.com/BDoGG12
+
 TikTok: @karate_mechanic
