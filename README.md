@@ -17,8 +17,9 @@ Users who want deeper guidance can unlock **BFit Premium**, which provides perso
 - **Data Privacy** — All calculations happen locally on your device.
 
 ### 🔒 BFit Premium (In-App Subscription)
-Unlock deeper insights powered by the OpenAI API:
+Get accurate Body Fat Percentage Calculations & Unlock deeper insights powered by the OpenAI API:
 
+- **Navy Seal Calculator** — Estimate your body fat percentage instantly using circumference measurements to get an accurate calculation on your body fat percentage.  
 - **AI Body Insights** — Understand what your estimated body fat means for health, performance, and physique.  
 - **AI Meal Suggestions** — Suggested foods, macro guidance, and simple meal outlines tailored to your goals.  
 - **AI Fitness Recommendations** — Training ideas and weekly strategies to help you improve.  
