@@ -14,6 +14,7 @@ struct UserInputView: View {
     @State private var weight = 253.0
     @State private var viewModel = BodyFatViewModel()
     @State private var result: Double? = nil
+    @State private var user: User = User(age: 55, height: 65, weight: 253, gender: .male)
     
     // Results
     @State private var resultMsg: String? = nil
@@ -35,9 +36,9 @@ struct UserInputView: View {
             }
             .onTapGesture {
                 if selectedGender == "male" {
-                    viewModel.gender = "male"
+                    user.gender = .male
                 } else {
-                    viewModel.gender = "female"
+                    user.gender = .female
                 }
             }
         }
@@ -61,7 +62,7 @@ struct UserInputView: View {
                             Text("100")
                         } onEditingChanged: { editing in
                             isEditing = editing
-                            viewModel.age = Int(age)
+                            user.age = Int(age)
                         }
                 }
             }
@@ -84,7 +85,7 @@ struct UserInputView: View {
                             Text("90")
                         } onEditingChanged: { editing in
                             isEditing = editing
-                            viewModel.height = height
+                            user.height = height
                         }
                 }
             }
@@ -107,7 +108,7 @@ struct UserInputView: View {
                             Text("440")
                         } onEditingChanged: { editing in
                             isEditing = editing
-                            viewModel.weight = weight
+                            user.weight = weight
                         }
                 }
             }
@@ -139,13 +140,13 @@ struct UserInputView: View {
     
     func getResults() {
         // Assign values to result
-        result = viewModel.calculateBodyFatPercentage(gender: selectedGender, height: viewModel.height, weight: viewModel.weight, age: viewModel.age)
+        result = viewModel.calculateBodyFatPercentage(user)
         
         // Assign values to resultMsg
-        resultMsg = viewModel.bodyFatPercentageRange(bfpResult: result ?? 10.1, gender: selectedGender)
+        resultMsg = viewModel.bodyFatPercentageRange(result ?? 10.1, user)
         
         // Assign values to resultColor
-        resultColor = viewModel.colorCodeBFP(result: resultMsg ?? "Unknown")
+        resultColor = viewModel.colorCodeBFP(resultMsg ?? "Unknown")
         
         // Change showSheet to true
         showSheet = true
