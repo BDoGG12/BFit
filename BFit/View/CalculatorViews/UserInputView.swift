@@ -28,114 +28,120 @@ struct UserInputView: View {
     
     @State private var isEditing = false
     var body: some View {
-        VStack {
-            Text("Select Gender")
-            Picker(selection: $selectedGender, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
-                Text("Male").tag("male")
-                Text("Female").tag("female")
-            }
-            .onTapGesture {
-                if selectedGender == "male" {
-                    user.gender = .male
-                } else {
-                    user.gender = .female
-                }
-            }
-        }
-        .padding(10)
-        VStack {
-            // Age
+        NavigationStack {
             VStack {
-                VStack{
-                    HStack {
-                        Text("Age: \(Int(age)) yrs")
+                Text("Select Gender")
+                Picker(selection: $selectedGender, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
+                    Text("Male").tag("male")
+                    Text("Female").tag("female")
+                }
+                .onTapGesture {
+                    if selectedGender == "male" {
+                        user.gender = .male
+                    } else {
+                        user.gender = .female
                     }
-                    Slider(
-                        value: $age,
-                            in: 10...100,
-                            step: 1
-                        ) {
-                            Text("Age")
-                        } minimumValueLabel: {
-                            Text("10")
-                        } maximumValueLabel: {
-                            Text("100")
-                        } onEditingChanged: { editing in
-                            isEditing = editing
-                            user.age = Int(age)
-                        }
                 }
             }
-            
-            // Height
+            .padding(10)
             VStack {
-                VStack{
-                    HStack {
-                        Text("Height: \(Int(height)) in")
-                    }
-                    Slider(
-                        value: $height,
-                            in: 40...90,
-                            step: 1
-                        ) {
-                            Text("Height")
-                        } minimumValueLabel: {
-                            Text("40")
-                        } maximumValueLabel: {
-                            Text("90")
-                        } onEditingChanged: { editing in
-                            isEditing = editing
-                            user.height = height
+                // Age
+                VStack {
+                    VStack{
+                        HStack {
+                            Text("Age: \(Int(age)) yrs")
                         }
-                }
-            }
-            
-            // Weight
-            VStack {
-                VStack{
-                    HStack {
-                        Text("Weight: \(Int(weight)) lbs")
+                        Slider(
+                            value: $age,
+                                in: 10...100,
+                                step: 1
+                            ) {
+                                Text("Age")
+                            } minimumValueLabel: {
+                                Text("10")
+                            } maximumValueLabel: {
+                                Text("100")
+                            } onEditingChanged: { editing in
+                                isEditing = editing
+                                user.age = Int(age)
+                            }
                     }
-                    Slider(
-                        value: $weight,
-                            in: 66...440,
-                            step: 1
-                        ) {
-                            Text("Height")
-                        } minimumValueLabel: {
-                            Text("66")
-                        } maximumValueLabel: {
-                            Text("440")
-                        } onEditingChanged: { editing in
-                            isEditing = editing
-                            user.weight = weight
-                        }
                 }
-            }
-        }
-        .padding(10)
-        
-        VStack {
-            Button("Calculate", action: {
-                getResults()
-            })
-            .font(.system(size: 20, weight: .bold, design: .default))
-            .foregroundColor(.white)
-            .padding()
-            .background(Color.blue)
-            .cornerRadius(10)
-            .tint(.blue)
-            
-            Button("", action: {
                 
-            })
-            .sheet(isPresented: $showSheet) {
-                ResultsView(result: result ?? 0.0, bfpZone: resultMsg ?? "Unknown", color: resultColor ?? .gray)
+                // Height
+                VStack {
+                    VStack{
+                        HStack {
+                            Text("Height: \(Int(height)) in")
+                        }
+                        Slider(
+                            value: $height,
+                                in: 40...90,
+                                step: 1
+                            ) {
+                                Text("Height")
+                            } minimumValueLabel: {
+                                Text("40")
+                            } maximumValueLabel: {
+                                Text("90")
+                            } onEditingChanged: { editing in
+                                isEditing = editing
+                                user.height = height
+                            }
+                    }
+                }
+                
+                // Weight
+                VStack {
+                    VStack{
+                        HStack {
+                            Text("Weight: \(Int(weight)) lbs")
+                        }
+                        Slider(
+                            value: $weight,
+                                in: 66...440,
+                                step: 1
+                            ) {
+                                Text("Height")
+                            } minimumValueLabel: {
+                                Text("66")
+                            } maximumValueLabel: {
+                                Text("440")
+                            } onEditingChanged: { editing in
+                                isEditing = editing
+                                user.weight = weight
+                            }
+                    }
+                }
             }
-            .disabled(showNext == false)
+            .padding(10)
             
+            VStack {
+                Button("Calculate Body Fat %", action: {
+                    getResults()
+                })
+                .font(.system(size: 20, weight: .bold, design: .default))
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.blue)
+                .cornerRadius(10)
+                .tint(.blue)
+                
+                Button("", action: {
+                    
+                })
+                .sheet(isPresented: $showSheet) {
+                    ResultsView(result: result ?? 0.0, bfpZone: resultMsg ?? "Unknown", color: resultColor ?? .gray)
+                }
+                .disabled(showNext == false)
+                
+            }
+            .navigationTitle("BMI Input")
+            .navigationBarTitleDisplayMode(.large)
+
         }
-       
+        
+               
     }
     
     func getResults() {
