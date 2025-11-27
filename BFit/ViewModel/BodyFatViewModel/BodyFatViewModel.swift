@@ -10,35 +10,31 @@ import Foundation
 import SwiftUICore
 
 class BodyFatViewModel: ObservableObject {
-    @Published var gender: String = "male"
-    @Published var height: Double = 65
-    @Published var weight: Double = 253
-    @Published var age: Int = 55
     
-    func calculateBodyFatPercentage(gender: String, height: Double, weight: Double, age: Int) -> Double {
+    func calculateBodyFatPercentage(_ user: User) -> Double {
         
         // Formula
         // BFP = (1.2 * BMI) + (0.23 * age) - (10.8 * 1) - 5.4
         // If gender is male, use binary value of 1, else 0
-        let BMI = (weight * 703) / pow(height, 2)
+        let BMI = (user.weight * 703) / pow(user.height, 2)
         var result: Double
         
-        if gender == "male" {
-            result = (1.2 * BMI) + (0.23 * Double(age)) - (10.8 * 1) - 5.4
+        if user.gender == .male {
+            result = (1.2 * BMI) + (0.23 * Double(user.age)) - (10.8 * 1) - 5.4
         } else {
-            result = (1.2 * BMI) + (0.23 * Double(age)) - (10.8 * 0) - 5.4
+            result = (1.2 * BMI) + (0.23 * Double(user.age)) - (10.8 * 0) - 5.4
         }
         return result
     }
     
-    func bodyFatPercentageRange(bfpResult: Double, gender: String) -> String {
+    func bodyFatPercentageRange(_ bfpResult: Double, _ user: User) -> String {
         
         // if gender is male, then do the body fat percentage checks
         // if gender is female, same thing
         
         var bfpFeedback = ""
         
-        if gender == "male" {
+        if user.gender == .male {
             switch bfpResult {
             case 2...5:
                 bfpFeedback = "Essential Fat"
@@ -72,7 +68,7 @@ class BodyFatViewModel: ObservableObject {
         return bfpFeedback
     }
     
-    func colorCodeBFP(result: String) -> Color {
+    func colorCodeBFP(_ result: String) -> Color {
         
         switch result {
         case "Essential Fat":
