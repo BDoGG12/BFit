@@ -34,18 +34,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D452D0B12EC12EF2009C8E4E /* BFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D452D0C12EC12EF3009C8E4E /* BFitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BFitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D452D0CB2EC12EF3009C8E4E /* BFitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BFitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D452D0B12EC12EF2009C8E4E /* BFit Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BFit Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D452D0C12EC12EF3009C8E4E /* BFit CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BFit CalculatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D452D0CB2EC12EF3009C8E4E /* BFit CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BFit CalculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		D45CC2692EC7C9D4007ACDAD /* Exceptions for "BFit" folder in "BFit" target */ = {
+		D45CC2692EC7C9D4007ACDAD /* Exceptions for "BFit" folder in "BFit Calculator" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = D452D0B02EC12EF2009C8E4E /* BFit */;
+			target = D452D0B02EC12EF2009C8E4E /* BFit Calculator */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -53,7 +53,7 @@
 		D452D0B32EC12EF2009C8E4E /* BFit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				D45CC2692EC7C9D4007ACDAD /* Exceptions for "BFit" folder in "BFit" target */,
+				D45CC2692EC7C9D4007ACDAD /* Exceptions for "BFit" folder in "BFit Calculator" target */,
 			);
 			path = BFit;
 			sourceTree = "<group>";
@@ -115,9 +115,9 @@
 		D452D0B22EC12EF2009C8E4E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D452D0B12EC12EF2009C8E4E /* BFit.app */,
-				D452D0C12EC12EF3009C8E4E /* BFitTests.xctest */,
-				D452D0CB2EC12EF3009C8E4E /* BFitUITests.xctest */,
+				D452D0B12EC12EF2009C8E4E /* BFit Calculator.app */,
+				D452D0C12EC12EF3009C8E4E /* BFit CalculatorTests.xctest */,
+				D452D0CB2EC12EF3009C8E4E /* BFit CalculatorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,9 +125,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D452D0B02EC12EF2009C8E4E /* BFit */ = {
+		D452D0B02EC12EF2009C8E4E /* BFit Calculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D452D0D52EC12EF3009C8E4E /* Build configuration list for PBXNativeTarget "BFit" */;
+			buildConfigurationList = D452D0D52EC12EF3009C8E4E /* Build configuration list for PBXNativeTarget "BFit Calculator" */;
 			buildPhases = (
 				D452D0AD2EC12EF2009C8E4E /* Sources */,
 				D452D0AE2EC12EF2009C8E4E /* Frameworks */,
@@ -140,7 +140,7 @@
 			fileSystemSynchronizedGroups = (
 				D452D0B32EC12EF2009C8E4E /* BFit */,
 			);
-			name = BFit;
+			name = "BFit Calculator";
 			packageProductDependencies = (
 				D452D0EB2EC13AD2009C8E4E /* GoogleSignIn */,
 				D452D0ED2EC13AD2009C8E4E /* GoogleSignInSwift */,
@@ -151,12 +151,12 @@
 				D45CC2642EC7C2B0007ACDAD /* FirebaseFirestore */,
 			);
 			productName = BFit;
-			productReference = D452D0B12EC12EF2009C8E4E /* BFit.app */;
+			productReference = D452D0B12EC12EF2009C8E4E /* BFit Calculator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D452D0C02EC12EF3009C8E4E /* BFitTests */ = {
+		D452D0C02EC12EF3009C8E4E /* BFit CalculatorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D452D0D82EC12EF3009C8E4E /* Build configuration list for PBXNativeTarget "BFitTests" */;
+			buildConfigurationList = D452D0D82EC12EF3009C8E4E /* Build configuration list for PBXNativeTarget "BFit CalculatorTests" */;
 			buildPhases = (
 				D452D0BD2EC12EF3009C8E4E /* Sources */,
 				D452D0BE2EC12EF3009C8E4E /* Frameworks */,
@@ -170,16 +170,16 @@
 			fileSystemSynchronizedGroups = (
 				D452D0C42EC12EF3009C8E4E /* BFitTests */,
 			);
-			name = BFitTests;
+			name = "BFit CalculatorTests";
 			packageProductDependencies = (
 			);
 			productName = BFitTests;
-			productReference = D452D0C12EC12EF3009C8E4E /* BFitTests.xctest */;
+			productReference = D452D0C12EC12EF3009C8E4E /* BFit CalculatorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D452D0CA2EC12EF3009C8E4E /* BFitUITests */ = {
+		D452D0CA2EC12EF3009C8E4E /* BFit CalculatorUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D452D0DB2EC12EF3009C8E4E /* Build configuration list for PBXNativeTarget "BFitUITests" */;
+			buildConfigurationList = D452D0DB2EC12EF3009C8E4E /* Build configuration list for PBXNativeTarget "BFit CalculatorUITests" */;
 			buildPhases = (
 				D452D0C72EC12EF3009C8E4E /* Sources */,
 				D452D0C82EC12EF3009C8E4E /* Frameworks */,
@@ -193,11 +193,11 @@
 			fileSystemSynchronizedGroups = (
 				D452D0CE2EC12EF3009C8E4E /* BFitUITests */,
 			);
-			name = BFitUITests;
+			name = "BFit CalculatorUITests";
 			packageProductDependencies = (
 			);
 			productName = BFitUITests;
-			productReference = D452D0CB2EC12EF3009C8E4E /* BFitUITests.xctest */;
+			productReference = D452D0CB2EC12EF3009C8E4E /* BFit CalculatorUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -223,7 +223,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D452D0AC2EC12EF2009C8E4E /* Build configuration list for PBXProject "BFit" */;
+			buildConfigurationList = D452D0AC2EC12EF2009C8E4E /* Build configuration list for PBXProject "BFit Calculator" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -241,9 +241,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D452D0B02EC12EF2009C8E4E /* BFit */,
-				D452D0C02EC12EF3009C8E4E /* BFitTests */,
-				D452D0CA2EC12EF3009C8E4E /* BFitUITests */,
+				D452D0B02EC12EF2009C8E4E /* BFit Calculator */,
+				D452D0C02EC12EF3009C8E4E /* BFit CalculatorTests */,
+				D452D0CA2EC12EF3009C8E4E /* BFit CalculatorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -299,12 +299,12 @@
 /* Begin PBXTargetDependency section */
 		D452D0C32EC12EF3009C8E4E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D452D0B02EC12EF2009C8E4E /* BFit */;
+			target = D452D0B02EC12EF2009C8E4E /* BFit Calculator */;
 			targetProxy = D452D0C22EC12EF3009C8E4E /* PBXContainerItemProxy */;
 		};
 		D452D0CD2EC12EF3009C8E4E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D452D0B02EC12EF2009C8E4E /* BFit */;
+			target = D452D0B02EC12EF2009C8E4E /* BFit Calculator */;
 			targetProxy = D452D0CC2EC12EF3009C8E4E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -446,18 +446,17 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appworkshop.BFit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appworkshop.BFitCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -478,18 +477,17 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appworkshop.BFit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appworkshop.BFitCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -508,7 +506,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BFit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BFit";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BFit Calculator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BFit Calculator";
 			};
 			name = Debug;
 		};
@@ -527,7 +525,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BFit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BFit";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BFit Calculator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BFit Calculator";
 			};
 			name = Release;
 		};
@@ -568,7 +566,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D452D0AC2EC12EF2009C8E4E /* Build configuration list for PBXProject "BFit" */ = {
+		D452D0AC2EC12EF2009C8E4E /* Build configuration list for PBXProject "BFit Calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D452D0D32EC12EF3009C8E4E /* Debug */,
@@ -577,7 +575,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D452D0D52EC12EF3009C8E4E /* Build configuration list for PBXNativeTarget "BFit" */ = {
+		D452D0D52EC12EF3009C8E4E /* Build configuration list for PBXNativeTarget "BFit Calculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D452D0D62EC12EF3009C8E4E /* Debug */,
@@ -586,7 +584,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D452D0D82EC12EF3009C8E4E /* Build configuration list for PBXNativeTarget "BFitTests" */ = {
+		D452D0D82EC12EF3009C8E4E /* Build configuration list for PBXNativeTarget "BFit CalculatorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D452D0D92EC12EF3009C8E4E /* Debug */,
@@ -595,7 +593,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D452D0DB2EC12EF3009C8E4E /* Build configuration list for PBXNativeTarget "BFitUITests" */ = {
+		D452D0DB2EC12EF3009C8E4E /* Build configuration list for PBXNativeTarget "BFit CalculatorUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D452D0DC2EC12EF3009C8E4E /* Debug */,
