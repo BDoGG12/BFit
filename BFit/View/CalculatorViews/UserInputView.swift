@@ -43,8 +43,8 @@ struct UserInputView: View {
                 .ignoresSafeArea()
                 
                 VStack {
-                    VStack {
-                        Text("Select Gender")
+                    HStack {
+                        Text("Select Gender:")
                             .font(.title3.weight(.bold))
                             .foregroundStyle(.white)
                             
@@ -52,13 +52,13 @@ struct UserInputView: View {
                             Text("Male").tag("male")
                             Text("Female").tag("female")
                         }
-                        .onTapGesture {
+                        .onChange(of: selectedGender, {
                             if selectedGender == "male" {
                                 user.gender = .male
                             } else {
                                 user.gender = .female
                             }
-                        }
+                        })
                     }
                     .padding(10)
                     VStack {
