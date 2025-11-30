@@ -190,111 +190,37 @@
             margin-top: 8px;
         }
 
+        /* HERO PHONE / SCREENSHOTS */
         .hero-phone {
             justify-self: center;
-        }
-
-        .phone-shell {
-            width: 260px;
-            max-width: 100%;
-            aspect-ratio: 9/19.5;
-            border-radius: 34px;
-            padding: 10px;
-            background: radial-gradient(circle at top, #111827, #020617);
-            border: 1px solid rgba(148,163,184,0.5);
-            box-shadow:
-                0 18px 45px rgba(15,23,42,0.9),
-                0 0 0 1px rgba(15,23,42,0.9);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .phone-inner {
-            width: 100%;
-            height: 100%;
-            border-radius: 26px;
-            overflow: hidden;
-            background: radial-gradient(circle at top, #0f172a, #020617);
-            padding: 16px 14px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            gap: 16px;
+            align-items: center;
         }
 
-        .phone-notch {
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 96px;
-            height: 12px;
-            border-radius: 999px;
-            background: #020617;
+        .app-screenshot {
+            width: 100%;
+            max-width: 260px;
+            border-radius: 34px;
+            box-shadow:
+                0 20px 50px rgba(15, 23, 42, 0.95),
+                0 0 0 1px rgba(15, 23, 42, 0.9);
+            display: block;
         }
 
-        .phone-title {
-            font-size: 0.9rem;
-            color: #e5e7eb;
-            text-align: center;
-            margin-bottom: 10px;
+        .app-screenshot.secondary {
+            max-width: 230px;
+            opacity: 0.95;
         }
 
-        .phone-card {
-            border-radius: 18px;
-            padding: 10px 12px;
-            background: radial-gradient(circle at top left, #22c55e22, #020617);
-            border: 1px solid rgba(55, 65, 81, 0.9);
-            margin-bottom: 8px;
-        }
-
-        .phone-label {
-            font-size: 0.7rem;
-            color: var(--muted);
-            margin-bottom: 3px;
-        }
-
-        .phone-value {
-            display: flex;
-            align-items: baseline;
-            gap: 4px;
-        }
-
-        .phone-value-main {
-            font-size: 1.7rem;
-            font-weight: 700;
-            color: #bbf7d0;
-        }
-
-        .phone-value-unit {
-            font-size: 0.8rem;
-            color: #6ee7b7;
-        }
-
-        .phone-tag {
-            display: inline-flex;
-            font-size: 0.65rem;
-            padding: 2px 8px;
-            border-radius: 999px;
-            border: 1px solid rgba(52,211,153,0.6);
-            color: #6ee7b7;
-            margin-top: 4px;
-        }
-
-        .phone-grid {
-            display: grid;
-            gap: 8px;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            margin-top: 8px;
-        }
-
-        .phone-pill {
-            border-radius: 999px;
-            padding: 6px 8px;
-            border: 1px solid rgba(55,65,81,0.9);
-            font-size: 0.7rem;
-            display: flex;
-            justify-content: space-between;
-            color: #e5e7eb;
+        @media (max-width: 480px) {
+            .app-screenshot {
+                max-width: 220px;
+            }
+            .app-screenshot.secondary {
+                max-width: 200px;
+            }
         }
 
         section {
@@ -451,46 +377,9 @@
             </div>
 
             <div class="hero-phone">
-                <div class="phone-shell">
-                    <div class="phone-notch"></div>
-                    <div class="phone-inner">
-                        <div>
-                            <div class="phone-title">Body Fat Result</div>
-
-                            <div class="phone-card">
-                                <div class="phone-label">Estimated Body Fat</div>
-                                <div class="phone-value">
-                                    <div class="phone-value-main">14.8</div>
-                                    <div class="phone-value-unit">% BF</div>
-                                </div>
-                                <div class="phone-tag">Lean • Healthy range</div>
-                            </div>
-
-                            <div class="phone-grid">
-                                <div class="phone-pill">
-                                    <span>BMI</span>
-                                    <span>22.4</span>
-                                </div>
-                                <div class="phone-pill">
-                                    <span>Age</span>
-                                    <span>27</span>
-                                </div>
-                                <div class="phone-pill">
-                                    <span>Height</span>
-                                    <span>5'9"</span>
-                                </div>
-                                <div class="phone-pill">
-                                    <span>Weight</span>
-                                    <span>160 lb</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style="font-size: 0.65rem; color: #6b7280; text-align: center; margin-top: 10px;">
-                            For informational purposes only. Not medical advice.
-                        </div>
-                    </div>
-                </div>
+                <!-- Your real screenshots -->
+                <img src="bfit-input.png" alt="BFit BMI input screen" class="app-screenshot primary" />
+                <img src="bfit-result.png" alt="BFit body fat result screen" class="app-screenshot secondary" />
             </div>
         </section>
 
@@ -532,7 +421,7 @@
                 </div>
 
                 <div class="feature">
-                    <div class="feature-icon">🚫</div>
+                    <div the class="feature-icon">🚫</div>
                     <h3>No clutter</h3>
                     <p>No ads, no popups, no dark patterns. Just a focused calculator to support your goals.</p>
                 </div>
