@@ -11,6 +11,32 @@ import SwiftUICore
 
 class BodyFatViewModel: ObservableObject {
     
+    func calculateNavySealBodyFatPercentage(_ user: NavySealUser) -> Double {
+        /*
+         Formula:
+         Men's BFP = 86.010 * log10(waist - neck) - 70.041 * log10(height) + 36.76
+         Women's BFP = 163.205 * log10(waist + hip - neck) - 97.684 * log10(height) - 78.387
+         */
+        
+        var bfp: Double = 0
+        if user.gender == .male {
+            bfp = getMaleNavySealBodyFatPercentage(user)
+        } else {
+            bfp = getFemaleNavySealBodyFatPercentage(user)
+        }
+        return bfp
+    }
+    
+    func getMaleNavySealBodyFatPercentage(_ user: NavySealUser) -> Double {
+        let maleBFP = 86.010 * log10(user.waist - user.neck) - 70.041 * log10(user.height) + 36.76
+        return maleBFP
+    }
+    
+    func getFemaleNavySealBodyFatPercentage(_ user: NavySealUser) -> Double {
+        let femaleBFP = 163.205 * log10(user.waist + user.hip - user.neck) - 97.684 * log10(user.height) - 78.387
+        return femaleBFP
+    }
+    
     func calculateBodyFatPercentage(_ user: User) -> Double {
         
         // Formula

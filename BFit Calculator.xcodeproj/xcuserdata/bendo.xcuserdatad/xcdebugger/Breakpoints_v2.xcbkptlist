@@ -14,8 +14,8 @@
             filePath = "BFit/ViewModel/BodyFatViewModel/BodyFatViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "bodyFatPercentageRange(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "BFit/ViewModel/BodyFatViewModel/BodyFatViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "calculateBodyFatPercentage(_:)"
             landmarkType = "7">
          </BreakpointContent>
