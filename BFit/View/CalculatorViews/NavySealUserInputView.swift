@@ -45,6 +45,7 @@ struct NavySealUserInputView: View {
                 .ignoresSafeArea()
                 
                 VStack {
+                    // Gender
                     HStack {
                         Text("Select Gender:")
                             .font(.title3.weight(.bold))
@@ -163,7 +164,7 @@ struct NavySealUserInputView: View {
                                             .foregroundStyle(.white)
                                     }
                                     Slider(
-                                        value: $waist,
+                                        value: $hip,
                                         in: 25...70,
                                             step: 1
                                         ) {
