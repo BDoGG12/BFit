@@ -28,12 +28,12 @@ class BodyFatViewModel: ObservableObject {
     }
     
     func getMaleNavySealBodyFatPercentage(_ user: NavySealUser) -> Double {
-        let maleBFP = 86.010 * log10(user.waist - user.neck) - 70.041 * log10(user.height) + 36.76
+        let maleBFP = (86.010 * log10(user.waist - user.neck) - 70.041) * (log10(user.height) + 36.76)
         return maleBFP
     }
     
     func getFemaleNavySealBodyFatPercentage(_ user: NavySealUser) -> Double {
-        let femaleBFP = 163.205 * log10(user.waist + user.hip - user.neck) - 97.684 * log10(user.height) - 78.387
+        let femaleBFP = (163.205 * log10(user.waist + user.hip - user.neck)) - (97.684 * log10(user.height)) - 78.387
         return femaleBFP
     }
     
@@ -51,6 +51,44 @@ class BodyFatViewModel: ObservableObject {
             result = (1.2 * BMI) + (0.23 * Double(user.age)) - (10.8 * 0) - 5.4
         }
         return result
+    }
+    
+    func navySealBodyFatPercentageRange(_ bfpResult: Double, _ user: NavySealUser) -> String {
+        var bfpFeedback = ""
+        
+        if user.gender == .male {
+            switch bfpResult {
+            case 2...5:
+                bfpFeedback = "Essential Fat"
+            case 6...13:
+                bfpFeedback = "Athletes"
+            case 14...17:
+                bfpFeedback = "Fitness"
+            case 18...24:
+                bfpFeedback = "Average"
+            case 25...:
+                bfpFeedback = "Obese"
+            default:
+                bfpFeedback = "Check your results again"
+            }
+        } else {
+            switch bfpResult {
+            case 10...13:
+                bfpFeedback = "Essential Fat"
+            case 14...20:
+                bfpFeedback = "Athletes"
+            case 21...24:
+                bfpFeedback = "Fitness"
+            case 25...31:
+                bfpFeedback = "Average"
+            case 32...:
+                bfpFeedback = "Obese"
+            default:
+                bfpFeedback = "Check your results again"
+            }
+        }
+        
+        return bfpFeedback
     }
     
     func bodyFatPercentageRange(_ bfpResult: Double, _ user: User) -> String {
