@@ -55,9 +55,10 @@ class BodyFatViewModel: ObservableObject {
     
     func navySealBodyFatPercentageRange(_ bfpResult: Double, _ user: NavySealUser) -> String {
         var bfpFeedback = ""
+        let roundedResult = bfpResult.rounded()
         
         if user.gender == .male {
-            switch bfpResult {
+            switch roundedResult {
             case 2...5:
                 bfpFeedback = "Essential Fat"
             case 6...13:
@@ -72,7 +73,7 @@ class BodyFatViewModel: ObservableObject {
                 bfpFeedback = "Check your results again"
             }
         } else {
-            switch bfpResult {
+            switch roundedResult {
             case 10...13:
                 bfpFeedback = "Essential Fat"
             case 14...20:
@@ -97,9 +98,10 @@ class BodyFatViewModel: ObservableObject {
         // if gender is female, same thing
         
         var bfpFeedback = ""
+        let roundedResult = bfpResult.rounded()
         
         if user.gender == .male {
-            switch bfpResult {
+            switch roundedResult {
             case 2...5:
                 bfpFeedback = "Essential Fat"
             case 6...13:
@@ -114,7 +116,7 @@ class BodyFatViewModel: ObservableObject {
                 bfpFeedback = "Check your results again"
             }
         } else {
-            switch bfpResult {
+            switch roundedResult {
             case 10...13:
                 bfpFeedback = "Essential Fat"
             case 14...20:
