@@ -229,7 +229,21 @@ struct NavySealUserInputView: View {
     }
     
     func getResults() {
-        print("Navy seal results")
+        
+        // Assign values to result
+        result = viewModel.calculateNavySealBodyFatPercentage(user)
+        
+        // Get Result message
+        resultMsg = viewModel.navySealBodyFatPercentageRange(result ?? 0.0, user)
+        
+        // Get Color
+        
+        resultColor = viewModel.colorCodeBFP(resultMsg ?? "Unknown")
+        
+        showSheet = true
+        showNext = true
+        
+        print("Results are calculated: \(result ?? 10.1)%, \(resultMsg ?? "Unknown, please try again"), \(resultColor ?? .blue)")
     }
 }
 
