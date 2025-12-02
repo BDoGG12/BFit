@@ -10,9 +10,9 @@ import SwiftUI
 struct NavySealUserInputView: View {
     @State private var selectedGender: String = "male"
     @State private var height = 65.0
-    @State private var neck = 55.0
-    @State private var waist = 253.0
-    @State private var hip = 253.0
+    @State private var neck = 16.0
+    @State private var waist = 40.0
+    @State private var hip = 48.0
 
     @State private var viewModel = BodyFatViewModel()
     @State private var result: Double? = nil
@@ -164,7 +164,7 @@ struct NavySealUserInputView: View {
                                     }
                                     Slider(
                                         value: $waist,
-                                        in: 25...80,
+                                        in: 25...70,
                                             step: 1
                                         ) {
                                             Text("Hip")
@@ -173,7 +173,7 @@ struct NavySealUserInputView: View {
                                                 .font(.headline.weight(.semibold))
                                                 .foregroundStyle(.white)
                                         } maximumValueLabel: {
-                                            Text("80")
+                                            Text("70")
                                                 .font(.headline.weight(.semibold))
                                                 .foregroundStyle(.white)
                                         } onEditingChanged: { editing in
