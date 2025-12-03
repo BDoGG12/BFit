@@ -14,8 +14,8 @@
             filePath = "BFit/ViewModel/BodyFatViewModel/BodyFatViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "bodyFatPercentageRange(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,15 +23,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9C46D3BB-6061-4E81-B5E0-EC4DC83C5261"
+            uuid = "FF664DFD-FE92-4F86-83EE-8E62F2343D86"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BFit/View/CalculatorViews/NavySealUserInputView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "getResults()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EDF36691-6DFB-4370-894F-725F802F8997"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BFit/View/CalculatorViews/UserInputView.swift"
+            filePath = "BFit/View/CalculatorViews/NavySealUserInputView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "getResults()"
             landmarkType = "7">
          </BreakpointContent>
