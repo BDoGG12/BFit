@@ -10,9 +10,9 @@ import SwiftUI
 struct NavySealUserInputView: View {
     @State private var selectedGender: String = "male"
     @State private var height = 65.0
-    @State private var neck = 55.0
-    @State private var waist = 253.0
-    @State private var hip = 253.0
+    @State private var neck = 16.0
+    @State private var waist = 40.0
+    @State private var hip = 48.0
 
     @State private var viewModel = BodyFatViewModel()
     @State private var result: Double? = nil
@@ -45,6 +45,7 @@ struct NavySealUserInputView: View {
                 .ignoresSafeArea()
                 
                 VStack {
+                    // Gender
                     HStack {
                         Text("Select Gender:")
                             .font(.title3.weight(.bold))
@@ -163,8 +164,8 @@ struct NavySealUserInputView: View {
                                             .foregroundStyle(.white)
                                     }
                                     Slider(
-                                        value: $waist,
-                                        in: 25...80,
+                                        value: $hip,
+                                        in: 25...70,
                                             step: 1
                                         ) {
                                             Text("Hip")
@@ -173,7 +174,7 @@ struct NavySealUserInputView: View {
                                                 .font(.headline.weight(.semibold))
                                                 .foregroundStyle(.white)
                                         } maximumValueLabel: {
-                                            Text("80")
+                                            Text("70")
                                                 .font(.headline.weight(.semibold))
                                                 .foregroundStyle(.white)
                                         } onEditingChanged: { editing in
@@ -228,7 +229,21 @@ struct NavySealUserInputView: View {
     }
     
     func getResults() {
-        print("Navy seal results")
+        
+        // Assign values to result
+        result = viewModel.calculateNavySealBodyFatPercentage(user)
+        
+        // Get Result message
+        resultMsg = viewModel.navySealBodyFatPercentageRange(result ?? 0.0, user)
+        
+        // Get Color
+        
+        resultColor = viewModel.colorCodeBFP(resultMsg ?? "Unknown")
+        
+        showSheet = true
+        showNext = true
+        
+        print("Results are calculated: \(result ?? 10.1)%, \(resultMsg ?? "Unknown, please try again"), \(resultColor ?? .blue)")
     }
 }
 

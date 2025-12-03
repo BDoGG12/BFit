@@ -53,15 +53,12 @@ class BodyFatViewModel: ObservableObject {
         return result
     }
     
-    func bodyFatPercentageRange(_ bfpResult: Double, _ user: User) -> String {
-        
-        // if gender is male, then do the body fat percentage checks
-        // if gender is female, same thing
-        
+    func navySealBodyFatPercentageRange(_ bfpResult: Double, _ user: NavySealUser) -> String {
         var bfpFeedback = ""
+        let roundedResult = bfpResult.rounded()
         
         if user.gender == .male {
-            switch bfpResult {
+            switch roundedResult {
             case 2...5:
                 bfpFeedback = "Essential Fat"
             case 6...13:
@@ -76,7 +73,50 @@ class BodyFatViewModel: ObservableObject {
                 bfpFeedback = "Check your results again"
             }
         } else {
-            switch bfpResult {
+            switch roundedResult {
+            case 10...13:
+                bfpFeedback = "Essential Fat"
+            case 14...20:
+                bfpFeedback = "Athletes"
+            case 21...24:
+                bfpFeedback = "Fitness"
+            case 25...31:
+                bfpFeedback = "Average"
+            case 32...:
+                bfpFeedback = "Obese"
+            default:
+                bfpFeedback = "Check your results again"
+            }
+        }
+        
+        return bfpFeedback
+    }
+    
+    func bodyFatPercentageRange(_ bfpResult: Double, _ user: User) -> String {
+        
+        // if gender is male, then do the body fat percentage checks
+        // if gender is female, same thing
+        
+        var bfpFeedback = ""
+        let roundedResult = bfpResult.rounded()
+        
+        if user.gender == .male {
+            switch roundedResult {
+            case 2...5:
+                bfpFeedback = "Essential Fat"
+            case 6...13:
+                bfpFeedback = "Athletes"
+            case 14...17:
+                bfpFeedback = "Fitness"
+            case 18...24:
+                bfpFeedback = "Average"
+            case 25...:
+                bfpFeedback = "Obese"
+            default:
+                bfpFeedback = "Check your results again"
+            }
+        } else {
+            switch roundedResult {
             case 10...13:
                 bfpFeedback = "Essential Fat"
             case 14...20:
