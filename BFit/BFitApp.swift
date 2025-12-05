@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import RevenueCat
 
 
 @main
 struct BFitApp: App {
+    
+    init() {
+        Purchases.configure(withAPIKey: Constants.testAPIKey)
+    }
     
     var body: some Scene {
         WindowGroup {
