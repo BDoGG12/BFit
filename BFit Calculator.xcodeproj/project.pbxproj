@@ -14,10 +14,8 @@
 		D45CC2612EC7C2B0007ACDAD /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D45CC2602EC7C2B0007ACDAD /* FirebaseCrashlytics */; };
 		D45CC2632EC7C2B0007ACDAD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D45CC2622EC7C2B0007ACDAD /* FirebaseDatabase */; };
 		D45CC2652EC7C2B0007ACDAD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D45CC2642EC7C2B0007ACDAD /* FirebaseFirestore */; };
-		D4640DEA2EE34E5A00E4EC97 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = D4640DE92EE34E5A00E4EC97 /* ReceiptParser */; };
-		D4640DEC2EE34E5A00E4EC97 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = D4640DEB2EE34E5A00E4EC97 /* RevenueCat */; };
-		D4640DEE2EE34E5A00E4EC97 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = D4640DED2EE34E5A00E4EC97 /* RevenueCatUI */; };
-		D4640DF02EE34E5A00E4EC97 /* RevenueCat_CustomEntitlementComputation in Frameworks */ = {isa = PBXBuildFile; productRef = D4640DEF2EE34E5A00E4EC97 /* RevenueCat_CustomEntitlementComputation */; };
+		D4D354642EE352C8002357F4 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = D4D354632EE352C8002357F4 /* RevenueCat */; };
+		D4D354662EE352C8002357F4 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = D4D354652EE352C8002357F4 /* RevenueCatUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,12 +81,10 @@
 				D452D0EC2EC13AD2009C8E4E /* GoogleSignIn in Frameworks */,
 				D45CC25D2EC7C2B0007ACDAD /* FirebaseAuth in Frameworks */,
 				D45CC2612EC7C2B0007ACDAD /* FirebaseCrashlytics in Frameworks */,
+				D4D354642EE352C8002357F4 /* RevenueCat in Frameworks */,
+				D4D354662EE352C8002357F4 /* RevenueCatUI in Frameworks */,
 				D45CC25F2EC7C2B0007ACDAD /* FirebaseCore in Frameworks */,
-				D4640DEC2EE34E5A00E4EC97 /* RevenueCat in Frameworks */,
 				D452D0EE2EC13AD2009C8E4E /* GoogleSignInSwift in Frameworks */,
-				D4640DEA2EE34E5A00E4EC97 /* ReceiptParser in Frameworks */,
-				D4640DEE2EE34E5A00E4EC97 /* RevenueCatUI in Frameworks */,
-				D4640DF02EE34E5A00E4EC97 /* RevenueCat_CustomEntitlementComputation in Frameworks */,
 				D45CC2652EC7C2B0007ACDAD /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,10 +153,8 @@
 				D45CC2602EC7C2B0007ACDAD /* FirebaseCrashlytics */,
 				D45CC2622EC7C2B0007ACDAD /* FirebaseDatabase */,
 				D45CC2642EC7C2B0007ACDAD /* FirebaseFirestore */,
-				D4640DE92EE34E5A00E4EC97 /* ReceiptParser */,
-				D4640DEB2EE34E5A00E4EC97 /* RevenueCat */,
-				D4640DED2EE34E5A00E4EC97 /* RevenueCatUI */,
-				D4640DEF2EE34E5A00E4EC97 /* RevenueCat_CustomEntitlementComputation */,
+				D4D354632EE352C8002357F4 /* RevenueCat */,
+				D4D354652EE352C8002357F4 /* RevenueCatUI */,
 			);
 			productName = BFit;
 			productReference = D452D0B12EC12EF2009C8E4E /* BFit Calculator.app */;
@@ -247,7 +241,7 @@
 			packageReferences = (
 				D452D0EA2EC13AD2009C8E4E /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				D45CC25B2EC7C2B0007ACDAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				D4640DE82EE34E5A00E4EC97 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
+				D4D354622EE352C8002357F4 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D452D0B22EC12EF2009C8E4E /* Products */;
@@ -634,7 +628,7 @@
 				minimumVersion = 12.6.0;
 			};
 		};
-		D4640DE82EE34E5A00E4EC97 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+		D4D354622EE352C8002357F4 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
 			requirement = {
@@ -680,25 +674,15 @@
 			package = D45CC25B2EC7C2B0007ACDAD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		D4640DE92EE34E5A00E4EC97 /* ReceiptParser */ = {
+		D4D354632EE352C8002357F4 /* RevenueCat */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D4640DE82EE34E5A00E4EC97 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
-			productName = ReceiptParser;
-		};
-		D4640DEB2EE34E5A00E4EC97 /* RevenueCat */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D4640DE82EE34E5A00E4EC97 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			package = D4D354622EE352C8002357F4 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
 			productName = RevenueCat;
 		};
-		D4640DED2EE34E5A00E4EC97 /* RevenueCatUI */ = {
+		D4D354652EE352C8002357F4 /* RevenueCatUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D4640DE82EE34E5A00E4EC97 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			package = D4D354622EE352C8002357F4 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
 			productName = RevenueCatUI;
-		};
-		D4640DEF2EE34E5A00E4EC97 /* RevenueCat_CustomEntitlementComputation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D4640DE82EE34E5A00E4EC97 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
-			productName = RevenueCat_CustomEntitlementComputation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
