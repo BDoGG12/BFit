@@ -7,11 +7,8 @@
 
 import Foundation
 
-struct Constants {
-    static let testAPIKey: String = {
-        guard let testAPIKey = Bundle.main.infoDictionary?["TEST_API_KEY"] as? String else {
-            fatalError("TEST_API_KEY not found in Secrets.xcconfig file")
-        }
-        return testAPIKey
-    }()
+enum RCConstants {
+    static let apiKey = "test_QiJLuhcByQcbpHZtJAjADTlYpdv"
+    
+    static let entitlementId = "bfit_calculator_premium"
 }
