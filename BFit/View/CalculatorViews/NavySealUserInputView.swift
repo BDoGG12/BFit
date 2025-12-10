@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct NavySealUserInputView: View {
+    // RevenueCat Manager
+    @EnvironmentObject private var rc: RevenueCatManager
+    @State private var isCustomerCenterPresented: Bool = false
+    
     @State private var selectedGender: String = "male"
     @State private var height = 65.0
     @State private var neck = 16.0
