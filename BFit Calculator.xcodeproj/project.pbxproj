@@ -14,6 +14,7 @@
 		D45CC2612EC7C2B0007ACDAD /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D45CC2602EC7C2B0007ACDAD /* FirebaseCrashlytics */; };
 		D45CC2632EC7C2B0007ACDAD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D45CC2622EC7C2B0007ACDAD /* FirebaseDatabase */; };
 		D45CC2652EC7C2B0007ACDAD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D45CC2642EC7C2B0007ACDAD /* FirebaseFirestore */; };
+		D4B02C232EE8BD9600536EC7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B02C222EE8BD9600536EC7 /* StoreKit.framework */; };
 		D4D354642EE352C8002357F4 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = D4D354632EE352C8002357F4 /* RevenueCat */; };
 		D4D354662EE352C8002357F4 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = D4D354652EE352C8002357F4 /* RevenueCatUI */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,7 @@
 		D452D0B12EC12EF2009C8E4E /* BFit Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BFit Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D452D0C12EC12EF3009C8E4E /* BFit CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BFit CalculatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D452D0CB2EC12EF3009C8E4E /* BFit CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BFit CalculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4B02C222EE8BD9600536EC7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -84,6 +86,7 @@
 				D4D354642EE352C8002357F4 /* RevenueCat in Frameworks */,
 				D4D354662EE352C8002357F4 /* RevenueCatUI in Frameworks */,
 				D45CC25F2EC7C2B0007ACDAD /* FirebaseCore in Frameworks */,
+				D4B02C232EE8BD9600536EC7 /* StoreKit.framework in Frameworks */,
 				D452D0EE2EC13AD2009C8E4E /* GoogleSignInSwift in Frameworks */,
 				D45CC2652EC7C2B0007ACDAD /* FirebaseFirestore in Frameworks */,
 			);
@@ -112,6 +115,7 @@
 				D452D0B32EC12EF2009C8E4E /* BFit */,
 				D452D0C42EC12EF3009C8E4E /* BFitTests */,
 				D452D0CE2EC12EF3009C8E4E /* BFitUITests */,
+				D4B02C212EE8BD9600536EC7 /* Frameworks */,
 				D452D0B22EC12EF2009C8E4E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -124,6 +128,14 @@
 				D452D0CB2EC12EF3009C8E4E /* BFit CalculatorUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D4B02C212EE8BD9600536EC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4B02C222EE8BD9600536EC7 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
