@@ -224,7 +224,23 @@ struct NavySealUserInputView: View {
                     .navigationBarTitleDisplayMode(.large)
                 }
             }
-            
+            // Paywall: only if BFit premium entitlement is not active
+            .presentPaywallIfNeeded(
+                requiredEntitlementIdentifier: RCConstants.entitlementId,
+                purchaseCompleted: { customerInfo in
+                    // Called when purchase finishes successfully
+                    Task { @MainActor in
+                        rc.handleUpdated(customerInfo)
+                    }
+                },
+                restoreCompleted: { customerInfo in
+                    // Called when restore finishes successfully
+                    Task { @MainActor in
+                        rc.handleUpdated(customerInfo)
+                    }
+                }
+            )
+
             
 
         }
