@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import RevenueCat
+import RevenueCatUI
 
 struct NavySealUserInputView: View {
     // RevenueCat Manager
     @EnvironmentObject private var rc: RevenueCatManager
     @State private var isCustomerCenterPresented: Bool = false
+    
+    // Customer Subscribe
+    @State private var isSubscribed: Bool = false
     
     @State private var selectedGender: String = "male"
     @State private var height = 65.0
@@ -48,133 +53,106 @@ struct NavySealUserInputView: View {
                 )
                 .ignoresSafeArea()
                 
-                VStack {
-                    // Gender
-                    HStack {
-                        Text("Select Gender:")
-                            .font(.title3.weight(.bold))
-                            .foregroundStyle(.white)
-                            
-                        Picker(selection: $selectedGender, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
-                            Text("Male").tag("male")
-                            Text("Female").tag("female")
-                        }
-                        .onChange(of: selectedGender, {
-                            if selectedGender == "male" {
-                                user.gender = .male
-                            } else {
-                                user.gender = .female
-                            }
-                        })
-                    }
-                    .padding(10)
+                if !isSubscribed {
+                    SubscribeView()
+                } else {
                     VStack {
-                        // Neck
-                        VStack {
-                            VStack{
-                                HStack {
-                                    Text("Neck: \(neck.formatted()) in")
-                                        .font(.title3.weight(.bold))
-                                        .foregroundStyle(.white)
-                                }
-                                Slider(
-                                    value: $neck,
-                                        in: 10...25,
-                                        step: 1
-                                    ) {
-                                        Text("Neck")
-                                    } minimumValueLabel: {
-                                        Text("10")
-                                            .font(.headline.weight(.semibold))
-                                            .foregroundStyle(.white)
-                                    } maximumValueLabel: {
-                                        Text("25")
-                                            .font(.headline.weight(.semibold))
-                                            .foregroundStyle(.white)
-                                    } onEditingChanged: { editing in
-                                        isEditing = editing
-                                        user.neck = Double(neck)
-                                    }
+                        // Gender
+                        HStack {
+                            Text("Select Gender:")
+                                .font(.title3.weight(.bold))
+                                .foregroundStyle(.white)
+                                
+                            Picker(selection: $selectedGender, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
+                                Text("Male").tag("male")
+                                Text("Female").tag("female")
                             }
-                        }
-                        
-                        // Height
-                        VStack {
-                            VStack{
-                                HStack {
-                                    Text("Height: \(height.formatted()) in")
-                                        .font(.title3.weight(.bold))
-                                        .foregroundStyle(.white)
+                            .onChange(of: selectedGender, {
+                                if selectedGender == "male" {
+                                    user.gender = .male
+                                } else {
+                                    user.gender = .female
                                 }
-                                Slider(
-                                    value: $height,
-                                        in: 40...90,
-                                        step: 1
-                                    ) {
-                                        Text("Height")
-                                            .font(.title3.weight(.semibold))
-                                            .foregroundStyle(.white)
-                                    } minimumValueLabel: {
-                                        Text("40")
-                                            .font(.headline.weight(.semibold))
-                                            .foregroundStyle(.white)
-                                    } maximumValueLabel: {
-                                        Text("90")
-                                            .font(.headline.weight(.semibold))
-                                            .foregroundStyle(.white)
-                                    } onEditingChanged: { editing in
-                                        isEditing = editing
-                                        user.height = height
-                                    }
-                            }
+                            })
                         }
-                        
-                        // Waist
+                        .padding(10)
                         VStack {
-                            VStack{
-                                HStack {
-                                    Text("Waist: \(waist.formatted()) in")
-                                        .font(.title3.weight(.bold))
-                                        .foregroundStyle(.white)
-                                }
-                                Slider(
-                                    value: $waist,
-                                        in: 20...70,
-                                        step: 1
-                                    ) {
-                                        Text("Waist")
-                                    } minimumValueLabel: {
-                                        Text("20")
-                                            .font(.headline.weight(.semibold))
-                                            .foregroundStyle(.white)
-                                    } maximumValueLabel: {
-                                        Text("70")
-                                            .font(.headline.weight(.semibold))
-                                            .foregroundStyle(.white)
-                                    } onEditingChanged: { editing in
-                                        isEditing = editing
-                                        user.waist = waist
-                                    }
-                            }
-                        }
-                        
-                        // Hip
-                        if user.gender == .female {
+                            // Neck
                             VStack {
                                 VStack{
                                     HStack {
-                                        Text("Hip: \(hip.formatted()) in")
+                                        Text("Neck: \(neck.formatted()) in")
                                             .font(.title3.weight(.bold))
                                             .foregroundStyle(.white)
                                     }
                                     Slider(
-                                        value: $hip,
-                                        in: 25...70,
+                                        value: $neck,
+                                            in: 10...25,
                                             step: 1
                                         ) {
-                                            Text("Hip")
+                                            Text("Neck")
                                         } minimumValueLabel: {
+                                            Text("10")
+                                                .font(.headline.weight(.semibold))
+                                                .foregroundStyle(.white)
+                                        } maximumValueLabel: {
                                             Text("25")
+                                                .font(.headline.weight(.semibold))
+                                                .foregroundStyle(.white)
+                                        } onEditingChanged: { editing in
+                                            isEditing = editing
+                                            user.neck = Double(neck)
+                                        }
+                                }
+                            }
+                            
+                            // Height
+                            VStack {
+                                VStack{
+                                    HStack {
+                                        Text("Height: \(height.formatted()) in")
+                                            .font(.title3.weight(.bold))
+                                            .foregroundStyle(.white)
+                                    }
+                                    Slider(
+                                        value: $height,
+                                            in: 40...90,
+                                            step: 1
+                                        ) {
+                                            Text("Height")
+                                                .font(.title3.weight(.semibold))
+                                                .foregroundStyle(.white)
+                                        } minimumValueLabel: {
+                                            Text("40")
+                                                .font(.headline.weight(.semibold))
+                                                .foregroundStyle(.white)
+                                        } maximumValueLabel: {
+                                            Text("90")
+                                                .font(.headline.weight(.semibold))
+                                                .foregroundStyle(.white)
+                                        } onEditingChanged: { editing in
+                                            isEditing = editing
+                                            user.height = height
+                                        }
+                                }
+                            }
+                            
+                            // Waist
+                            VStack {
+                                VStack{
+                                    HStack {
+                                        Text("Waist: \(waist.formatted()) in")
+                                            .font(.title3.weight(.bold))
+                                            .foregroundStyle(.white)
+                                    }
+                                    Slider(
+                                        value: $waist,
+                                            in: 20...70,
+                                            step: 1
+                                        ) {
+                                            Text("Waist")
+                                        } minimumValueLabel: {
+                                            Text("20")
                                                 .font(.headline.weight(.semibold))
                                                 .foregroundStyle(.white)
                                         } maximumValueLabel: {
@@ -183,46 +161,80 @@ struct NavySealUserInputView: View {
                                                 .foregroundStyle(.white)
                                         } onEditingChanged: { editing in
                                             isEditing = editing
-                                            user.hip = hip
+                                            user.waist = waist
                                         }
                                 }
-                                
                             }
-                        }
-                        
-                    }
-                    .padding(10)
-                    
-                    VStack {
-                        Button("Calculate Body Fat %", action: {
-                            getResults()
-                        })
-                        .font(.system(size: 20, weight: .bold, design: .default))
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .tint(.blue)
-                        
-                        Button("", action: {
                             
-                        })
-                        .sheet(isPresented: $showSheet) {
-                            ResultsView(result: result ?? 0.0, bfpZone: resultMsg ?? "Unknown", color: resultColor ?? .gray)
+                            // Hip
+                            if user.gender == .female {
+                                VStack {
+                                    VStack{
+                                        HStack {
+                                            Text("Hip: \(hip.formatted()) in")
+                                                .font(.title3.weight(.bold))
+                                                .foregroundStyle(.white)
+                                        }
+                                        Slider(
+                                            value: $hip,
+                                            in: 25...70,
+                                                step: 1
+                                            ) {
+                                                Text("Hip")
+                                            } minimumValueLabel: {
+                                                Text("25")
+                                                    .font(.headline.weight(.semibold))
+                                                    .foregroundStyle(.white)
+                                            } maximumValueLabel: {
+                                                Text("70")
+                                                    .font(.headline.weight(.semibold))
+                                                    .foregroundStyle(.white)
+                                            } onEditingChanged: { editing in
+                                                isEditing = editing
+                                                user.hip = hip
+                                            }
+                                    }
+                                    
+                                }
+                            }
+                            
                         }
-                        .disabled(showNext == false)
+                        .padding(10)
                         
-                    }
-                    .toolbar(content: {
-                        ToolbarItem(placement: .principal) {
-                            Text("Navy Seal Input")
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.white)
+                        VStack {
+                            Button("Calculate Body Fat %", action: {
+                                getResults()
+                            })
+                            .font(.system(size: 20, weight: .bold, design: .default))
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                            .tint(.blue)
+                            
+                            Button("", action: {
+                                
+                            })
+                            .sheet(isPresented: $showSheet) {
+                                ResultsView(result: result ?? 0.0, bfpZone: resultMsg ?? "Unknown", color: resultColor ?? .gray)
+                            }
+                            .disabled(showNext == false)
+                            
                         }
-                    })
-                    .navigationBarTitleDisplayMode(.large)
+                        .toolbar(content: {
+                            ToolbarItem(placement: .principal) {
+                                Text("Navy Seal Input")
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.white)
+                            }
+                        })
+                        .navigationBarTitleDisplayMode(.large)
+                    }
                 }
+                
+                
+
             }
             // Paywall: only if BFit premium entitlement is not active
             .presentPaywallIfNeeded(
@@ -246,6 +258,10 @@ struct NavySealUserInputView: View {
         }
         
                
+    }
+    
+    func checkCustomerEntitlement() async {
+        self.isSubscribed = await rc.checkEntitlement()
     }
     
     func getResults() {
