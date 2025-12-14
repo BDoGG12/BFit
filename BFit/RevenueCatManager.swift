@@ -28,6 +28,24 @@ final class RevenueCatManager: ObservableObject {
             await refreshCustomerInfo()
         }
     }
+    
+    func checkEntitlement() async -> Bool {
+        var isSubscribed: Bool = false
+        do {
+            let customerInfo = try await Purchases.shared.customerInfo()
+            if customerInfo.entitlements.all["BFit Calculator Premium"]?.isActive == true {
+                // User has access to entitlement
+                print("Customer Entitlement Status: \(customerInfo.entitlements.all["BFit Calculator Premium"]?.isActive ?? false)")
+                isSubscribed = true
+            } else {
+                isSubscribed = false
+            }
+        } catch {
+            print("Error: \(error)")
+        }
+        
+        return isSubscribed
+    }
 
     /// Listen continuously for CustomerInfo updates (purchase, restore, etc.)
     func startCustomerInfoListener() async {
