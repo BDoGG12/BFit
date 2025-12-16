@@ -6,8 +6,17 @@
 //
 
 import SwiftUI
+import RevenueCat
+import RevenueCatUI
 
 struct NavySealUserInputView: View {
+    // RevenueCat Manager
+    @EnvironmentObject private var rc: RevenueCatManager
+    @State private var isCustomerCenterPresented: Bool = false
+    
+    // Customer Subscribe
+    @State private var isSubscribed: Bool = false
+    
     @State private var selectedGender: String = "male"
     @State private var height = 65.0
     @State private var neck = 16.0
@@ -219,13 +228,35 @@ struct NavySealUserInputView: View {
                     })
                     .navigationBarTitleDisplayMode(.large)
                 }
+                
+                
+
             }
-            
+            // Paywall: only if BFit premium entitlement is not active
+            .presentPaywallIfNeeded(
+                requiredEntitlementIdentifier: RCConstants.entitlementId,
+                purchaseCompleted: { customerInfo in
+                    // Called when purchase finishes successfully
+                    Task { @MainActor in
+                        rc.handleUpdated(customerInfo)
+                    }
+                },
+                restoreCompleted: { customerInfo in
+                    // Called when restore finishes successfully
+                    Task { @MainActor in
+                        rc.handleUpdated(customerInfo)
+                    }
+                }
+            )
             
 
         }
         
                
+    }
+    
+    func checkCustomerEntitlement() {
+        self.isSubscribed = rc.hasPremium
     }
     
     func getResults() {

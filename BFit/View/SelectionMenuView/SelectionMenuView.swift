@@ -51,10 +51,15 @@ struct SelectionMenuView: View {
                     .pickerStyle(.menu)
                     .padding()
                     .navigationDestination(isPresented: $isSelected) {
-                        if selection == "BMI Method" {
+                        switch selection {
+                        case "Select":
+                            Text("Please select a method")
+                        case "BMI Method":
                             UserInputView()
-                        } else {
+                        case "Navy Seal Method":
                             NavySealUserInputView()
+                        default:
+                            Text("Unknown Selection")
                         }
                     }
                 }
