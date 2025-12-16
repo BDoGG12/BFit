@@ -10,5 +10,5 @@ import Foundation
 enum RCConstants {
     static let apiKey = "test_QiJLuhcByQcbpHZtJAjADTlYpdv"
     
-    static let entitlementId = "bfit_calculator_premium"
+    static let entitlementId = "BFit Calculator Premium"
 }
