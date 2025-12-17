@@ -16,4 +16,8 @@ class UserDefaultManager: UserDefaults {
     func saveUsageAmount(amount: Int) {
         UserDefaults.standard.set(amount, forKey: "usageAmt")
     }
+    
+    func storeLastCalculationDate(date: Date) {
+        UserDefaults.standard.set(date, forKey: "lastCalcDate")
+    }
 }
