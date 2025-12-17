@@ -38,6 +38,12 @@ struct NavySealUserInputView: View {
     @State private var showNext: Bool = false
     
     @State private var isEditing = false
+    
+    // Track Calculation Usage
+    let userDefaultManager = UserDefaultManager()
+    let dateManager = DateManager()
+    @AppStorage("usageAmt") var usageAmt: Int = 0
+    
     var body: some View {
         NavigationStack {
             
@@ -253,6 +259,17 @@ struct NavySealUserInputView: View {
         }
         
                
+    }
+    
+    func saveUsageAmount() {
+        let currentDate = dateManager.getCurrentDate()
+        let formattedDate = dateManager.convertToDate(currentDate) ?? Date()
+        userDefaultManager.storeLastCalculationDate(date: formattedDate)
+        
+        usageAmt += 1
+        userDefaultManager.store(value: usageAmt, forKey: "usageAmt")
+        userDefaultManager.saveUsageAmount(amount: usageAmt)
+        
     }
     
     func checkCustomerEntitlement() {
