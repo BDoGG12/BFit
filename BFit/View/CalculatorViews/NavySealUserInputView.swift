@@ -211,6 +211,23 @@ struct NavySealUserInputView: View {
                         Button("Calculate Body Fat %", action: {
                             getResults()
                         })
+                        .sheet(isPresented: $showPaywall, content: {
+                            if (!rc.hasPremium && usageAmt >= 3) {
+                                PaywallView()
+                                    .onPurchaseCompleted { customerInfo in
+                                        Task { @MainActor in
+                                            rc.handleUpdated(customerInfo)
+                                        }
+                                        showPaywall = false
+                                    }
+                                    .onRestoreCompleted { customerInfo in
+                                        Task { @MainActor in
+                                            rc.handleUpdated(customerInfo)
+                                        }
+                                        showPaywall = false
+                                    }
+                            }
+                        })
                         .font(.system(size: 20, weight: .bold, design: .default))
                         .foregroundColor(.white)
                         .padding()
@@ -220,11 +237,6 @@ struct NavySealUserInputView: View {
                         
                         Button("", action: {
                             
-                        })
-                        .sheet(isPresented: $showPaywall, content: {
-                            if (!rc.hasPremium && usageAmt >= 3) {
-                                PaywallView()
-                            }
                         })
                         .sheet(isPresented: $showSheet) {
                             ResultsView(result: result ?? 0.0, bfpZone: resultMsg ?? "Unknown", color: resultColor ?? .gray)
@@ -322,6 +334,7 @@ struct NavySealUserInputView: View {
         
         if (!rc.hasPremium && usageAmt >= 3) {
             showPaywall = true
+            print("Usage amount: \(usageAmt)")
             print("You must upgrade to premium to continue")
         } else {
             calculateResults()
