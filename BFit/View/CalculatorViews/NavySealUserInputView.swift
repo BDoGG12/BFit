@@ -34,6 +34,9 @@ struct NavySealUserInputView: View {
     // Show Sheet
     @State private var showSheet: Bool = false
     
+    // Show Paywall
+    @State private var showPaywall: Bool = false
+    
     // Show Next Button
     @State private var showNext: Bool = false
     
@@ -218,6 +221,11 @@ struct NavySealUserInputView: View {
                         Button("", action: {
                             
                         })
+                        .sheet(isPresented: $showPaywall, content: {
+                            if (!rc.hasPremium && usageAmt >= 3) {
+                                PaywallView()
+                            }
+                        })
                         .sheet(isPresented: $showSheet) {
                             ResultsView(result: result ?? 0.0, bfpZone: resultMsg ?? "Unknown", color: resultColor ?? .gray)
                         }
@@ -261,10 +269,25 @@ struct NavySealUserInputView: View {
                
     }
     
-    func saveUsageAmount() {
+    func recordCalculationDate() {
+        // Getting current date
         let currentDate = dateManager.getCurrentDate()
-        let formattedDate = dateManager.convertToDate(currentDate) ?? Date()
-        userDefaultManager.storeLastCalculationDate(date: formattedDate)
+        let formattedCurrentDate = dateManager.convertToDate(currentDate) ?? Date()
+        userDefaultManager.storeLastCalculationDate(date: formattedCurrentDate)
+        
+        // Get Next Date
+        let nextDate = dateManager.getNextDate()
+        
+        if (currentDate == nextDate) {
+            userDefaultManager.saveUsageAmount(amount: 0)
+            usageAmt = 0
+        } else {
+            print("No change to the amount")
+        }
+    }
+    
+    func saveUsageAmount() {
+        
         
         usageAmt += 1
         userDefaultManager.store(value: usageAmt, forKey: "usageAmt")
@@ -276,8 +299,7 @@ struct NavySealUserInputView: View {
         self.isSubscribed = rc.hasPremium
     }
     
-    func getResults() {
-        
+    func calculateResults() {
         // Assign values to result
         result = viewModel.calculateNavySealBodyFatPercentage(user)
         
@@ -292,6 +314,19 @@ struct NavySealUserInputView: View {
         showNext = true
         
         print("Results are calculated: \(result ?? 10.1)%, \(resultMsg ?? "Unknown, please try again"), \(resultColor ?? .blue)")
+    }
+    
+    func getResults() {
+        saveUsageAmount()
+        print("My entitlement status: \(rc.hasPremium)")
+        
+        if (!rc.hasPremium && usageAmt >= 3) {
+            showPaywall = true
+            print("You must upgrade to premium to continue")
+        } else {
+            calculateResults()
+        }
+        
     }
 }
 
