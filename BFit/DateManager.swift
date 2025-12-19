@@ -26,4 +26,14 @@ class DateManager: ObservableObject {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.date(from: dateString)
     }
+    
+    func convertToDateString(_ date: Date) -> String {
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
+    }
+    
+    func getLastCalcDate() -> String {
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return UserDefaults.standard.string(forKey: "lastCalcDate") ?? "2025-01-01"
+    }
 }
