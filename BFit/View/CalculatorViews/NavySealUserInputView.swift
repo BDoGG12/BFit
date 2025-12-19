@@ -285,6 +285,8 @@ struct NavySealUserInputView: View {
         // Getting current date
         let currentDate = dateManager.getCurrentDate()
         let formattedCurrentDate = dateManager.convertToDate(currentDate) ?? Date()
+        
+        // stores last calculated date
         userDefaultManager.storeLastCalculationDate(date: formattedCurrentDate)
         
         // Get Next Date
