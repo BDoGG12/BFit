@@ -343,7 +343,7 @@ struct NavySealUserInputView: View {
         let yesterday = dateManager.getLastCalcDate()
         let formattedToday = dateManager.convertToDate(today) ?? Date()
         let formattedYesterday = dateManager.convertToDate(yesterday) ?? Date()
-        if (formattedToday > formattedYesterday) {
+        if (formattedToday > formattedYesterday && !rc.hasPremium) {
             resetUsageAmount()
         }
         saveUsageAmount()
