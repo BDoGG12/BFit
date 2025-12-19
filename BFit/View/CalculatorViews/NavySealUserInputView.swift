@@ -34,10 +34,19 @@ struct NavySealUserInputView: View {
     // Show Sheet
     @State private var showSheet: Bool = false
     
+    // Show Paywall
+    @State private var showPaywall: Bool = false
+    
     // Show Next Button
     @State private var showNext: Bool = false
     
     @State private var isEditing = false
+    
+    // Track Calculation Usage
+    let userDefaultManager = UserDefaultManager()
+    let dateManager = DateManager()
+    @AppStorage("usageAmt") var usageAmt: Int = 0
+    
     var body: some View {
         NavigationStack {
             
@@ -202,6 +211,23 @@ struct NavySealUserInputView: View {
                         Button("Calculate Body Fat %", action: {
                             getResults()
                         })
+                        .sheet(isPresented: $showPaywall, content: {
+                            if (!rc.hasPremium && usageAmt >= 3) {
+                                PaywallView()
+                                    .onPurchaseCompleted { customerInfo in
+                                        Task { @MainActor in
+                                            rc.handleUpdated(customerInfo)
+                                        }
+                                        showPaywall = false
+                                    }
+                                    .onRestoreCompleted { customerInfo in
+                                        Task { @MainActor in
+                                            rc.handleUpdated(customerInfo)
+                                        }
+                                        showPaywall = false
+                                    }
+                            }
+                        })
                         .font(.system(size: 20, weight: .bold, design: .default))
                         .foregroundColor(.white)
                         .padding()
@@ -255,12 +281,47 @@ struct NavySealUserInputView: View {
                
     }
     
+    func resetUsageAmount() {
+        // Getting current date
+        let today = dateManager.getCurrentDate()
+        let formattedToday = dateManager.convertToDate(today) ?? Date()
+        
+        
+        // Get last Calc Date
+        let lastDate = dateManager.getLastCalcDate()
+        let formattedLastDate = dateManager.convertToDate(lastDate) ?? Date()
+        if (formattedToday != formattedLastDate && usageAmt >= 3) {
+            userDefaultManager.saveUsageAmount(amount: 0)
+            usageAmt = 0
+            
+            // stores last calculated date
+            userDefaultManager.storeLastCalculationDate(date: today)
+        } else {
+            // stores last calculated date with current date
+            userDefaultManager.storeLastCalculationDate(date: today)
+        }
+        
+    }
+    
+    func recordCalculationDate() {
+        let today = dateManager.getCurrentDate()
+        userDefaultManager.storeLastCalculationDate(date: today)
+    }
+    
+    func saveUsageAmount() {
+        
+        
+        usageAmt += 1
+        userDefaultManager.store(value: usageAmt, forKey: "usageAmt")
+        userDefaultManager.saveUsageAmount(amount: usageAmt)
+        
+    }
+    
     func checkCustomerEntitlement() {
         self.isSubscribed = rc.hasPremium
     }
     
-    func getResults() {
-        
+    func calculateResults() {
         // Assign values to result
         result = viewModel.calculateNavySealBodyFatPercentage(user)
         
@@ -275,6 +336,25 @@ struct NavySealUserInputView: View {
         showNext = true
         
         print("Results are calculated: \(result ?? 10.1)%, \(resultMsg ?? "Unknown, please try again"), \(resultColor ?? .blue)")
+    }
+    
+    func getResults() {
+        let today = dateManager.getCurrentDate()
+        let yesterday = dateManager.getLastCalcDate()
+        let formattedToday = dateManager.convertToDate(today) ?? Date()
+        let formattedYesterday = dateManager.convertToDate(yesterday) ?? Date()
+        if (formattedToday > formattedYesterday && !rc.hasPremium) {
+            resetUsageAmount()
+        }
+        saveUsageAmount()
+        recordCalculationDate()
+        
+        if (!rc.hasPremium && usageAmt >= 3) {
+            showPaywall = true
+        } else {
+            calculateResults()
+        }
+        
     }
 }
 
