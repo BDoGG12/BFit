@@ -34,6 +34,8 @@ class DateManager: ObservableObject {
     
     func getLastCalcDate() -> String {
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        return UserDefaults.standard.string(forKey: "lastCalcDate") ?? "2025-01-01"
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: Date()) ?? Date()
+        let yesterdayString = dateFormatter.string(from: yesterday)
+        return UserDefaults.standard.string(forKey: "lastCalcDate") ?? yesterdayString
     }
 }
