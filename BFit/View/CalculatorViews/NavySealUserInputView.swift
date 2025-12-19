@@ -291,25 +291,24 @@ struct NavySealUserInputView: View {
         let formattedTomorrow = dateManager.convertToDate(tomorrow) ?? Date()
         
         // Get last Calc Date
-        let yesterday = dateManager.getLastCalcDate()
-        let formattedYesterday = dateManager.convertToDate(yesterday) ?? Date()
-        if (formattedToday > formattedYesterday && usageAmt >= 3) {
+        let lastDate = dateManager.getLastCalcDate()
+        let formattedLastDate = dateManager.convertToDate(lastDate) ?? Date()
+        if (formattedToday != formattedLastDate && usageAmt >= 3) {
             userDefaultManager.saveUsageAmount(amount: 0)
             usageAmt = 0
             
             // stores last calculated date
-            userDefaultManager.storeLastCalculationDate(date: formattedToday)
+            userDefaultManager.storeLastCalculationDate(date: today)
         } else {
             // stores last calculated date with current date
-            userDefaultManager.storeLastCalculationDate(date: formattedToday)
+            userDefaultManager.storeLastCalculationDate(date: today)
         }
         
     }
     
     func recordCalculationDate() {
         let today = dateManager.getCurrentDate()
-        let formattedToday = dateManager.convertToDate(today) ?? Date()
-        userDefaultManager.storeLastCalculationDate(date: formattedToday)
+        userDefaultManager.storeLastCalculationDate(date: today)
     }
     
     func saveUsageAmount() {
@@ -343,6 +342,13 @@ struct NavySealUserInputView: View {
     }
     
     func getResults() {
+        let today = dateManager.getCurrentDate()
+        let yesterday = dateManager.getLastCalcDate()
+        let formattedToday = dateManager.convertToDate(today) ?? Date()
+        let formattedYesterday = dateManager.convertToDate(yesterday) ?? Date()
+        if (formattedToday > formattedYesterday) {
+            resetUsageAmount()
+        }
         saveUsageAmount()
         recordCalculationDate()
         
