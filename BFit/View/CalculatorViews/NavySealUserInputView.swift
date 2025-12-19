@@ -286,9 +286,6 @@ struct NavySealUserInputView: View {
         let today = dateManager.getCurrentDate()
         let formattedToday = dateManager.convertToDate(today) ?? Date()
         
-        // Get Next Date
-        let tomorrow = dateManager.getNextDate()
-        let formattedTomorrow = dateManager.convertToDate(tomorrow) ?? Date()
         
         // Get last Calc Date
         let lastDate = dateManager.getLastCalcDate()
