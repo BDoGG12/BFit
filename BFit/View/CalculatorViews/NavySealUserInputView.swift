@@ -281,29 +281,35 @@ struct NavySealUserInputView: View {
                
     }
     
-    func recordCalculationDate() {
+    func resetUsageAmount() {
         // Getting current date
-        let currentDate = dateManager.getCurrentDate()
-        let formattedCurrentDate = dateManager.convertToDate(currentDate) ?? Date()
+        let today = dateManager.getCurrentDate()
+        let formattedToday = dateManager.convertToDate(today) ?? Date()
         
         // Get Next Date
-        let nextDate = dateManager.getNextDate()
-        let formattedNextDate = dateManager.convertToDate(nextDate) ?? Date()
+        let tomorrow = dateManager.getNextDate()
+        let formattedTomorrow = dateManager.convertToDate(tomorrow) ?? Date()
         
         // Get last Calc Date
-        let lastDate = dateManager.getLastCalcDate()
-        let formattedLastDate = dateManager.convertToDate(lastDate) ?? Date()
-        
-        if (formattedCurrentDate > formattedLastDate) {
+        let yesterday = dateManager.getLastCalcDate()
+        let formattedYesterday = dateManager.convertToDate(yesterday) ?? Date()
+        if (formattedToday > formattedYesterday && usageAmt >= 3) {
             userDefaultManager.saveUsageAmount(amount: 0)
             usageAmt = 0
             
             // stores last calculated date
-            userDefaultManager.storeLastCalculationDate(date: formattedCurrentDate)
+            userDefaultManager.storeLastCalculationDate(date: formattedToday)
         } else {
             // stores last calculated date with current date
-            userDefaultManager.storeLastCalculationDate(date: formattedCurrentDate)
+            userDefaultManager.storeLastCalculationDate(date: formattedToday)
         }
+        
+    }
+    
+    func recordCalculationDate() {
+        let today = dateManager.getCurrentDate()
+        let formattedToday = dateManager.convertToDate(today) ?? Date()
+        userDefaultManager.storeLastCalculationDate(date: formattedToday)
     }
     
     func saveUsageAmount() {
