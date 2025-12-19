@@ -286,17 +286,23 @@ struct NavySealUserInputView: View {
         let currentDate = dateManager.getCurrentDate()
         let formattedCurrentDate = dateManager.convertToDate(currentDate) ?? Date()
         
-        // stores last calculated date
-        userDefaultManager.storeLastCalculationDate(date: formattedCurrentDate)
-        
         // Get Next Date
         let nextDate = dateManager.getNextDate()
+        let formattedNextDate = dateManager.convertToDate(nextDate) ?? Date()
         
-        if (currentDate == nextDate) {
+        // Get last Calc Date
+        let lastDate = dateManager.getLastCalcDate()
+        let formattedLastDate = dateManager.convertToDate(lastDate) ?? Date()
+        
+        if (formattedCurrentDate > formattedLastDate) {
             userDefaultManager.saveUsageAmount(amount: 0)
             usageAmt = 0
+            
+            // stores last calculated date
+            userDefaultManager.storeLastCalculationDate(date: formattedCurrentDate)
         } else {
-            print("No change to the amount")
+            // stores last calculated date with current date
+            userDefaultManager.storeLastCalculationDate(date: formattedCurrentDate)
         }
     }
     
@@ -332,12 +338,10 @@ struct NavySealUserInputView: View {
     
     func getResults() {
         saveUsageAmount()
-        print("My entitlement status: \(rc.hasPremium)")
+        recordCalculationDate()
         
         if (!rc.hasPremium && usageAmt >= 3) {
             showPaywall = true
-            print("Usage amount: \(usageAmt)")
-            print("You must upgrade to premium to continue")
         } else {
             calculateResults()
         }
