@@ -212,7 +212,7 @@ struct NavySealUserInputView: View {
                             getResults()
                         })
                         .sheet(isPresented: $showPaywall, content: {
-                            if (!rc.hasPremium && usageAmt >= 3) {
+                            if (((rc.customerInfo?.allPurchasedProductIdentifiers.isEmpty) != nil) && usageAmt >= 3) {
                                 PaywallView()
                                     .onPurchaseCompleted { customerInfo in
                                         Task { @MainActor in
@@ -349,7 +349,7 @@ struct NavySealUserInputView: View {
         saveUsageAmount()
         recordCalculationDate()
         
-        if (!rc.hasPremium && usageAmt >= 3) {
+        if ((rc.customerInfo?.allPurchasedProductIdentifiers.isEmpty ?? true) && usageAmt >= 3) {
             showPaywall = true
         } else {
             calculateResults()
