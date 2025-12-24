@@ -15,6 +15,7 @@ struct OnboardingPageView: View {
     var body: some View {
         ZStack {
             VStack {
+                Spacer(minLength: 20)
                 Text(title)
                     .font(.title)
                     .foregroundStyle(.white)
@@ -23,7 +24,7 @@ struct OnboardingPageView: View {
                         .resizable()
                         .font(.largeTitle)
                         .padding()
-                    
+                        .clipShape(.rect(cornerRadius: 60))
                 }
                 .foregroundStyle(.white)
                 Text(description)
