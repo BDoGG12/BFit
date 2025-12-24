@@ -20,4 +20,12 @@ class UserDefaultManager: UserDefaults {
     func storeLastCalculationDate(date: String) {
         UserDefaults.standard.set(date, forKey: "lastCalcDate")
     }
+    
+    func getAppHasLaunched() -> Bool {
+        UserDefaults.standard.bool(forKey: "appHasLaunched")
+    }
+    
+    func setAppHasLaunched(_ hasOnboarded: Bool) {
+        UserDefaults.standard.set(hasOnboarded, forKey: "appHasLaunched")
+    }
 }
