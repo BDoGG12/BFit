@@ -25,7 +25,7 @@ struct BFitApp: App {
         
         // Configure Purchases once at app launch
         Purchases.configure(with: Configuration
-            .builder(withAPIKey: RCConstants.apiKey)
+            .builder(withAPIKey: AppSecrets.revenueCatAPIKey)
             .with(storeKitVersion: .storeKit2)
             .build()
         )
