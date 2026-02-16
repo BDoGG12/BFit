@@ -17,22 +17,22 @@ struct RootView: View {
         NavigationStack {
             ContentView()
                 .navigationTitle("BFit Calculator")
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button {
-                            isCustomerCenterPresented = true
-                        } label: {
-                            Image(systemName: "person.crop.circle")
-                        }
-                        .accessibilityLabel("Manage Subscriptions")
-                    }
-                }
+//                .toolbar {
+//                    ToolbarItem(placement: .topBarTrailing) {
+//                        Button {
+//                            isCustomerCenterPresented = true
+//                        } label: {
+//                            Image(systemName: "person.crop.circle")
+//                        }
+//                        .accessibilityLabel("Manage Subscriptions")
+//                    }
+//                }
         }
                 
         // Customer Center (subscription management)
-        .sheet(isPresented: $isCustomerCenterPresented) {
-            CustomerCenterView()
-        }
+//        .sheet(isPresented: $isCustomerCenterPresented) {
+//            CustomerCenterView()
+//        }
     }
 }
 
