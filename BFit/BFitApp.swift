@@ -39,9 +39,9 @@ struct BFitApp: App {
                 })
                 .environmentObject(revenueCat)
                 // Listen for customer info updates for the entire app lifecycle
-                .task {
-                    await revenueCat.startCustomerInfoListener()
-                }
+//                .task {
+//                    await revenueCat.startCustomerInfoListener()
+//                }
         }
     }
 }

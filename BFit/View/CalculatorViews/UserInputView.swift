@@ -72,8 +72,7 @@ struct UserInputView: View {
                                 }
                                 Slider(
                                     value: $age,
-                                        in: 10...100,
-                                        step: 1
+                                        in: 10...100
                                     ) {
                                         Text("Age")
                                     } minimumValueLabel: {
@@ -101,8 +100,7 @@ struct UserInputView: View {
                                 }
                                 Slider(
                                     value: $height,
-                                        in: 40...90,
-                                        step: 1
+                                        in: 40...90
                                     ) {
                                         Text("Height")
                                             .font(.title3.weight(.semibold))
@@ -132,8 +130,7 @@ struct UserInputView: View {
                                 }
                                 Slider(
                                     value: $weight,
-                                        in: 66...440,
-                                        step: 1
+                                        in: 66...440
                                     ) {
                                         Text("Height")
                                     } minimumValueLabel: {
