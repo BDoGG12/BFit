@@ -93,8 +93,7 @@ struct NavySealUserInputView: View {
                                 }
                                 Slider(
                                     value: $neck,
-                                        in: 10...25,
-                                        step: 1
+                                        in: 10...25
                                     ) {
                                         Text("Neck")
                                     } minimumValueLabel: {
@@ -122,8 +121,7 @@ struct NavySealUserInputView: View {
                                 }
                                 Slider(
                                     value: $height,
-                                        in: 40...90,
-                                        step: 1
+                                        in: 40...90
                                     ) {
                                         Text("Height")
                                             .font(.title3.weight(.semibold))
@@ -153,8 +151,7 @@ struct NavySealUserInputView: View {
                                 }
                                 Slider(
                                     value: $waist,
-                                        in: 20...70,
-                                        step: 1
+                                        in: 20...70
                                     ) {
                                         Text("Waist")
                                     } minimumValueLabel: {
@@ -183,8 +180,7 @@ struct NavySealUserInputView: View {
                                     }
                                     Slider(
                                         value: $hip,
-                                        in: 25...70,
-                                            step: 1
+                                        in: 25...70
                                         ) {
                                             Text("Hip")
                                         } minimumValueLabel: {
