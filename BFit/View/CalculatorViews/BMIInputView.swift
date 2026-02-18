@@ -166,7 +166,7 @@ struct BMIInputView: View {
                             
                         })
                         .sheet(isPresented: $showSheet) {
-                            ResultsView(result: result ?? 0.0, bfpZone: resultMsg ?? "Unknown", color: resultColor ?? .gray)
+                            BMIResultsView(result: result ?? 0.0, bmiZone: resultMsg ?? "", color: resultColor ?? .black)
                         }
                         .disabled(showNext == false)
                         
@@ -189,7 +189,11 @@ struct BMIInputView: View {
     }
     
     func getResults() {
-        let bmi = viewModel.calculateBMI(user)
+        result = viewModel.calculateBMI(user)
+        resultMsg = viewModel.bmiRange(result ?? 0.0, user)
+        resultColor = viewModel.colorCodeBMI(resultMsg ?? "")
+        showNext = true
+        showSheet = true
     }
 }
 
