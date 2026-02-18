@@ -115,7 +115,7 @@ struct NavySealUserInputView: View {
                         VStack {
                             VStack{
                                 HStack {
-                                    Text("Height: \(height.formatted()) in")
+                                    Text("Height: \(Int(height)) in")
                                         .font(.title3.weight(.bold))
                                         .foregroundStyle(.white)
                                 }
