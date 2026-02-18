@@ -37,12 +37,18 @@ class BodyFatViewModel: ObservableObject {
         return femaleBFP
     }
     
+    func calculateBMI(_ user: User) -> Double {
+        // Formula: 703 * (weight in Ibs / height squared in inches)
+        let BMI = (user.weight * 703) / pow(user.height, 2)
+        return BMI
+    }
+    
     func calculateBodyFatPercentage(_ user: User) -> Double {
         
         // Formula
         // BFP = (1.2 * BMI) + (0.23 * age) - (10.8 * 1) - 5.4
         // If gender is male, use binary value of 1, else 0
-        let BMI = (user.weight * 703) / pow(user.height, 2)
+        let BMI = calculateBMI(user)
         var result: Double
         
         if user.gender == .male {
@@ -90,6 +96,25 @@ class BodyFatViewModel: ObservableObject {
         }
         
         return bfpFeedback
+    }
+    
+    func bmiRange(_ bmiResult: Double, _ user: User) -> String {
+        var bmiFeedback = ""
+        let roundedResult = bmiResult.rounded()
+        
+        switch roundedResult {
+        case 0..<18.5:
+            bmiFeedback = "Underweight"
+        case 18.5...24.9:
+            bmiFeedback = "Healthy weight"
+        case 25...29.9:
+            bmiFeedback = "Overweight"
+        case 30...:
+            bmiFeedback = "Obese"
+        default:
+            bmiFeedback = "Check your results again"
+        }
+        return bmiFeedback
     }
     
     func bodyFatPercentageRange(_ bfpResult: Double, _ user: User) -> String {
@@ -147,6 +172,22 @@ class BodyFatViewModel: ObservableObject {
             return Color.orange
         case "Obese":
             return Color.red
+        default:
+            return Color.black
+        }
+    }
+    
+    func colorCodeBMI(_ result: String) -> Color {
+        
+        switch result {
+        case "Underweight":
+            return Color.red
+        case "Healthy weight":
+            return Color.green
+        case "Overweight":
+            return Color.yellow
+        case "Obese":
+            return Color.orange
         default:
             return Color.black
         }
