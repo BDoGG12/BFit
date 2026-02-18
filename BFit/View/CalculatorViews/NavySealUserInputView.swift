@@ -87,7 +87,7 @@ struct NavySealUserInputView: View {
                         VStack {
                             VStack{
                                 HStack {
-                                    Text("Neck: \(neck.formatted()) in")
+                                    Text("Neck: \(Int(neck)) in")
                                         .font(.title3.weight(.bold))
                                         .foregroundStyle(.white)
                                 }
@@ -145,7 +145,7 @@ struct NavySealUserInputView: View {
                         VStack {
                             VStack{
                                 HStack {
-                                    Text("Waist: \(waist.formatted()) in")
+                                    Text("Waist: \(Int(waist)) in")
                                         .font(.title3.weight(.bold))
                                         .foregroundStyle(.white)
                                 }
