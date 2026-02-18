@@ -14,7 +14,7 @@ struct BMIResultsView: View {
     let color: Color
     var body: some View {
         VStack {
-            Text("Your Body Fat Percentage is \(Int(result.rounded()))%!")
+            Text("Your BMI is \(Int(result.rounded())) Ibs/in\u{00B2}!")
                 .font(.system(size: 32, weight: .bold, design: .default))
                 .multilineTextAlignment(.center)
             Text("You are in the ")
@@ -39,5 +39,5 @@ struct BMIResultsView: View {
 }
 
 #Preview {
-    BMIResultsView()
+    BMIResultsView(result: 20.0, bmiZone: "Healthy Weight", color: .green)
 }
