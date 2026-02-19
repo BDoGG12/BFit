@@ -10,7 +10,7 @@ import SwiftUI
 struct SelectionMenuView: View {
     @State private var navigationPath = NavigationPath()
     @State private var selection = "Select"
-    @State private var navigationChoice = ["BMI Method", "Navy Seal Method"]
+    @State private var navigationChoice = ["Select", "BMI Method", "Navy Seal Method"]
     @State private var isBMISelected: Bool = false
     @State private var isSelected: Bool = false
     var body: some View {
@@ -39,12 +39,14 @@ struct SelectionMenuView: View {
                             Text("BMI Method").tag("BMI Method")
                             Text("Navy Seal Method").tag( "Navy Seal Method")
                         }
+                        .onAppear {
+                            selection = "Select"
+                        }
                         .onChange(of: selection) {
                             if selection == "BMI Method" || selection == "Navy Seal Method" {
                                 isSelected = true
                             } else {
                                 isSelected = false
-                                print("Do nothing")
                             }
                         }
                     }
