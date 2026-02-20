@@ -1,13 +1,13 @@
 //
-//  UserInputView.swift
-//  BFit
+//  BMIInputView.swift
+//  BFit Calculator
 //
-//  Created by Ben Do on 11/9/25.
+//  Created by Ben Do on 2/17/26.
 //
 
 import SwiftUI
 
-struct UserInputView: View {
+struct BMIInputView: View {
     @State private var selectedGender: String = "male"
     @State private var height = 65.0
     @State private var age = 55.0
@@ -27,6 +27,7 @@ struct UserInputView: View {
     @State private var showNext: Bool = false
     
     @State private var isEditing = false
+    
     var body: some View {
         NavigationStack {
             
@@ -165,7 +166,7 @@ struct UserInputView: View {
                             
                         })
                         .sheet(isPresented: $showSheet) {
-                            ResultsView(result: result ?? 0.0, bfpZone: resultMsg ?? "Unknown", color: resultColor ?? .gray)
+                            BMIResultsView(result: result ?? 0.0, bmiZone: resultMsg ?? "", color: resultColor ?? .black)
                         }
                         .disabled(showNext == false)
                         
@@ -185,27 +186,17 @@ struct UserInputView: View {
             
 
         }
-        
-               
     }
     
     func getResults() {
-        // Assign values to result
-        result = viewModel.calculateBodyFatPercentage(user)
-        
-        // Assign values to resultMsg
-        resultMsg = viewModel.bodyFatPercentageRange(result ?? 10.1, user)
-        
-        // Assign values to resultColor
-        resultColor = viewModel.colorCodeBFP(resultMsg ?? "Unknown")
-        
-        // Change showSheet to true
-        showSheet = true
+        result = viewModel.calculateBMI(user)
+        resultMsg = viewModel.bmiRange(result ?? 0.0, user)
+        resultColor = viewModel.colorCodeBMI(resultMsg ?? "")
         showNext = true
-        print("Results are calculated: \(result ?? 10.1)%, \(resultMsg ?? "Unknown, please try again"), \(resultColor ?? .blue)")
+        showSheet = true
     }
 }
 
 #Preview {
-    UserInputView()
+    BMIInputView()
 }

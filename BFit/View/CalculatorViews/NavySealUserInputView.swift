@@ -87,14 +87,13 @@ struct NavySealUserInputView: View {
                         VStack {
                             VStack{
                                 HStack {
-                                    Text("Neck: \(neck.formatted()) in")
+                                    Text("Neck: \(Int(neck)) in")
                                         .font(.title3.weight(.bold))
                                         .foregroundStyle(.white)
                                 }
                                 Slider(
                                     value: $neck,
-                                        in: 10...25,
-                                        step: 1
+                                        in: 10...25
                                     ) {
                                         Text("Neck")
                                     } minimumValueLabel: {
@@ -116,14 +115,13 @@ struct NavySealUserInputView: View {
                         VStack {
                             VStack{
                                 HStack {
-                                    Text("Height: \(height.formatted()) in")
+                                    Text("Height: \(Int(height)) in")
                                         .font(.title3.weight(.bold))
                                         .foregroundStyle(.white)
                                 }
                                 Slider(
                                     value: $height,
-                                        in: 40...90,
-                                        step: 1
+                                        in: 40...90
                                     ) {
                                         Text("Height")
                                             .font(.title3.weight(.semibold))
@@ -147,14 +145,13 @@ struct NavySealUserInputView: View {
                         VStack {
                             VStack{
                                 HStack {
-                                    Text("Waist: \(waist.formatted()) in")
+                                    Text("Waist: \(Int(waist)) in")
                                         .font(.title3.weight(.bold))
                                         .foregroundStyle(.white)
                                 }
                                 Slider(
                                     value: $waist,
-                                        in: 20...70,
-                                        step: 1
+                                        in: 20...70
                                     ) {
                                         Text("Waist")
                                     } minimumValueLabel: {
@@ -183,8 +180,7 @@ struct NavySealUserInputView: View {
                                     }
                                     Slider(
                                         value: $hip,
-                                        in: 25...70,
-                                            step: 1
+                                        in: 25...70
                                         ) {
                                             Text("Hip")
                                         } minimumValueLabel: {
@@ -211,23 +207,23 @@ struct NavySealUserInputView: View {
                         Button("Calculate Body Fat %", action: {
                             getResults()
                         })
-                        .sheet(isPresented: $showPaywall, content: {
-                            if (((rc.customerInfo?.allPurchasedProductIdentifiers.isEmpty) != nil) && usageAmt >= 3) {
-                                PaywallView()
-                                    .onPurchaseCompleted { customerInfo in
-                                        Task { @MainActor in
-                                            rc.handleUpdated(customerInfo)
-                                        }
-                                        showPaywall = false
-                                    }
-                                    .onRestoreCompleted { customerInfo in
-                                        Task { @MainActor in
-                                            rc.handleUpdated(customerInfo)
-                                        }
-                                        showPaywall = false
-                                    }
-                            }
-                        })
+//                        .sheet(isPresented: $showPaywall, content: {
+//                            if (((rc.customerInfo?.allPurchasedProductIdentifiers.isEmpty) != nil) && usageAmt >= 3) {
+//                                PaywallView()
+//                                    .onPurchaseCompleted { customerInfo in
+//                                        Task { @MainActor in
+//                                            rc.handleUpdated(customerInfo)
+//                                        }
+//                                        showPaywall = false
+//                                    }
+//                                    .onRestoreCompleted { customerInfo in
+//                                        Task { @MainActor in
+//                                            rc.handleUpdated(customerInfo)
+//                                        }
+//                                        showPaywall = false
+//                                    }
+//                            }
+//                        })
                         .font(.system(size: 20, weight: .bold, design: .default))
                         .foregroundColor(.white)
                         .padding()
@@ -259,21 +255,21 @@ struct NavySealUserInputView: View {
 
             }
             // Paywall: only if BFit premium entitlement is not active
-            .presentPaywallIfNeeded(
-                requiredEntitlementIdentifier: RCConstants.entitlementId,
-                purchaseCompleted: { customerInfo in
-                    // Called when purchase finishes successfully
-                    Task { @MainActor in
-                        rc.handleUpdated(customerInfo)
-                    }
-                },
-                restoreCompleted: { customerInfo in
-                    // Called when restore finishes successfully
-                    Task { @MainActor in
-                        rc.handleUpdated(customerInfo)
-                    }
-                }
-            )
+//            .presentPaywallIfNeeded(
+//                requiredEntitlementIdentifier: RCConstants.entitlementId,
+//                purchaseCompleted: { customerInfo in
+//                    // Called when purchase finishes successfully
+//                    Task { @MainActor in
+//                        rc.handleUpdated(customerInfo)
+//                    }
+//                },
+//                restoreCompleted: { customerInfo in
+//                    // Called when restore finishes successfully
+//                    Task { @MainActor in
+//                        rc.handleUpdated(customerInfo)
+//                    }
+//                }
+//            )
             
 
         }
@@ -349,11 +345,12 @@ struct NavySealUserInputView: View {
         saveUsageAmount()
         recordCalculationDate()
         
-        if ((rc.customerInfo?.allPurchasedProductIdentifiers.isEmpty ?? true) && usageAmt >= 3) {
-            showPaywall = true
-        } else {
-            calculateResults()
-        }
+//        if ((rc.customerInfo?.allPurchasedProductIdentifiers.isEmpty ?? true) && usageAmt >= 3) {
+//            showPaywall = true
+//        } else {
+//            calculateResults()
+//        }
+        calculateResults()
         
     }
 }
