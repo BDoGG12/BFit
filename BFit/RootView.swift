@@ -31,7 +31,8 @@ struct RootView: View {
         //                }
                 }
                 Tab("BMI Calculator", systemImage: "scalemass") {
-                    Text("Calculate BMI")
+                    BMIInputView()
+                        .navigationTitle("BMI Calculator")
                 }
                 
                 }
