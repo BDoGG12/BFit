@@ -152,7 +152,7 @@ struct BMIInputView: View {
                     .padding(10)
                     
                     VStack {
-                        Button("Calculate Body Fat %", action: {
+                        Button("Calculate Body Mass Index", action: {
                             getResults()
                         })
                         .font(.system(size: 20, weight: .bold, design: .default))
