@@ -6,12 +6,8 @@
 //
 
 import SwiftUI
-import RevenueCat
-import RevenueCatUI
 
 struct NavySealUserInputView: View {
-    // RevenueCat Manager
-    @EnvironmentObject private var rc: RevenueCatManager
     @State private var isCustomerCenterPresented: Bool = false
     
     // Customer Subscribe
@@ -313,9 +309,6 @@ struct NavySealUserInputView: View {
         
     }
     
-    func checkCustomerEntitlement() {
-        self.isSubscribed = rc.hasPremium
-    }
     
     func calculateResults() {
         // Assign values to result
@@ -339,9 +332,6 @@ struct NavySealUserInputView: View {
         let yesterday = dateManager.getLastCalcDate()
         let formattedToday = dateManager.convertToDate(today) ?? Date()
         let formattedYesterday = dateManager.convertToDate(yesterday) ?? Date()
-        if (formattedToday > formattedYesterday && !rc.hasPremium) {
-            resetUsageAmount()
-        }
         saveUsageAmount()
         recordCalculationDate()
         

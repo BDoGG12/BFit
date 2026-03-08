@@ -6,12 +6,8 @@
 //
 
 import SwiftUI
-import RevenueCat
-import RevenueCatUI
 
 struct RootView: View {
-    @EnvironmentObject private var rc: RevenueCatManager
-    @State private var isCustomerCenterPresented = false
     
     var body: some View {
         NavigationStack {
@@ -19,16 +15,6 @@ struct RootView: View {
                 Tab("Body Fat Calculator", systemImage: "figure.walk") {
                     ContentView()
                         .navigationTitle("BFit Calculator")
-        //                .toolbar {
-        //                    ToolbarItem(placement: .topBarTrailing) {
-        //                        Button {
-        //                            isCustomerCenterPresented = true
-        //                        } label: {
-        //                            Image(systemName: "person.crop.circle")
-        //                        }
-        //                        .accessibilityLabel("Manage Subscriptions")
-        //                    }
-        //                }
                 }
                 Tab("BMI Calculator", systemImage: "scalemass") {
                     BMIInputView()
@@ -39,10 +25,6 @@ struct RootView: View {
                 
         }
                 
-        // Customer Center (subscription management)
-//        .sheet(isPresented: $isCustomerCenterPresented) {
-//            CustomerCenterView()
-//        }
     }
 }
 
