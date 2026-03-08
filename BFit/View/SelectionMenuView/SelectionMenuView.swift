@@ -39,6 +39,9 @@ struct SelectionMenuView: View {
                             Text("BMI Method").tag("BMI Method")
                             Text("Navy Seal Method").tag( "Navy Seal Method")
                         }
+                        .onAppear {
+                            selection = "Select"
+                        }
                         .onChange(of: selection) {
                             if selection == "BMI Method" || selection == "Navy Seal Method" {
                                 isSelected = true
