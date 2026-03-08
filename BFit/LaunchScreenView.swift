@@ -6,11 +6,9 @@
 //
 
 import SwiftUI
-import RevenueCat
 
 struct LaunchScreenView: View {
     @State private var isActive: Bool = false
-    @StateObject private var revenueCat = RevenueCatManager()
     @State private var showOnboarding: Bool
     let userDefaultManager = UserDefaultManager()
     
@@ -19,15 +17,6 @@ struct LaunchScreenView: View {
         
         showOnboarding = !appHasLaunched
         print("Shows onboarding: \(showOnboarding)")
-        // Verbose logs while integrating
-        Purchases.logLevel = .debug
-        
-        // Configure Purchases once at app launch
-        Purchases.configure(with: Configuration
-            .builder(withAPIKey: AppSecrets.revenueCatAPIKey)
-            .with(storeKitVersion: .storeKit2)
-            .build()
-        )
     }
     
     var body: some View {
@@ -36,11 +25,6 @@ struct LaunchScreenView: View {
                 .sheet(isPresented: $showOnboarding, content: {
                     OnboardingFlowView(showOnboarding: $showOnboarding)
                 })
-                .environmentObject(revenueCat)
-                // Listen for customer info updates for the entire app lifecycle
-//                .task {
-//                    await revenueCat.startCustomerInfoListener()
-//                }
         } else {
             ZStack {
                 LinearGradient(
