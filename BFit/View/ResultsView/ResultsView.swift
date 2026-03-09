@@ -12,8 +12,17 @@ struct ResultsView: View {
     let result: Double
     let bfpZone: String
     let color: Color
+    @State private var floating = false
+    
     var body: some View {
         VStack {
+            Image("bfit_mascot")
+                .resizable()
+                .scaledToFit()
+                .offset(y: floating ? -8 : 8)
+                .frame(width: 200, height: 200)
+                .animation(.easeInOut.repeatForever(autoreverses: true), value: floating)
+                
             Text("Your Body Fat Percentage is \(Int(result.rounded()))%!")
                 .font(.system(size: 32, weight: .bold, design: .default))
                 .multilineTextAlignment(.center)
@@ -32,6 +41,9 @@ struct ResultsView: View {
             .background(Color.blue)
             .cornerRadius(10)
         }
+        .onAppear(perform: {
+            floating = true
+        })
         .background {
             Image("results_fit")
         }
