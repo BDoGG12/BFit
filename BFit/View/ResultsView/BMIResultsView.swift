@@ -25,6 +25,7 @@ struct BMIResultsView: View {
             )
             .ignoresSafeArea()
             VStack {
+                MascotAnimationView(imageName: "bfit_mascot")
                 VStack {
                     Text("Your BMI is \(Int(result.rounded())) Ibs/in\u{00B2}!")
                         .font(.system(size: 32, weight: .bold, design: .default))

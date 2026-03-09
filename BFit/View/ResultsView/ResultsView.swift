@@ -27,12 +27,7 @@ struct ResultsView: View {
             )
             .ignoresSafeArea()
             VStack {
-                Image("bfit_mascot")
-                    .resizable()
-                    .scaledToFit()
-                    .offset(y: floating ? -8 : 8)
-                    .frame(width: 200, height: 200)
-                    .animation(.easeInOut.repeatForever(autoreverses: true), value: floating)
+                MascotAnimationView(imageName: "bfit_mascot")
                     
                 VStack {
                     Text("Your Body Fat Percentage is \(Int(result.rounded()))%!")
@@ -56,9 +51,7 @@ struct ResultsView: View {
                 .background(Color.blue)
                 .cornerRadius(10)
             }
-            .onAppear(perform: {
-                floating = true
-            })
+            
         }
         
     }
