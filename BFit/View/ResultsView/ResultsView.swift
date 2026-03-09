@@ -42,7 +42,7 @@ struct ResultsView: View {
                         .font(.system(size: 25, weight: .bold, design: .default))
                         .multilineTextAlignment(.center)
                 }
-                .foregroundStyle(.white)
+                .foregroundStyle(.background)
                 
                 Text("\(bfpZone) Zone!")
                     .font(.system(size: 30, weight: .bold, design: .default))
